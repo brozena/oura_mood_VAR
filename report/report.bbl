@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ruwaard et~al.(2018)Ruwaard, Kooistra, and Thong]{ruwaardEcological}
+Jeroen Ruwaard, Lisa Kooistra, and Melissa Thong.
+\newblock \emph{Ecological {Momentary} {Assessment} in {Mental} {Health}
+  {Research}}.
+\newblock November 2018.
+\newblock URL \url{https://jruwaard.github.io/aph_ema_handbook/csd.html}.
+
+\end{thebibliography}

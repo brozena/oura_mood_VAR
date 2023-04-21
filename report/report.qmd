@@ -1,0 +1,14 @@
+---
+title: "Testing JMLR"
+author: Jeff Brozena
+date: May 5, 2023
+abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum nibh dapibus quam ornare, nec tempor nulla semper. Curabitur ac lacus maximus, ullamcorper nisl quis, auctor urna. Vestibulum tempor purus at auctor egestas. Suspendisse fermentum massa sapien, sed finibus enim sagittis accumsan. Etiam lacinia ligula vel euismod mattis. Fusce mauris mi, porta at aliquam in, sollicitudin ut urna. Sed semper maximus sem, nec aliquam orci molestie eget. Nullam tristique mi at quam mollis interdum. Cras a laoreet urna, nec sagittis lorem. Ut neque lectus, fringilla posuere nibh quis, auctor sagittis dolor. Vivamus dictum, leo quis scelerisque interdum, felis felis ullamcorper massa, sed dapibus velit mauris non leo. Proin sit amet turpis nisl. Morbi vulputate mauris nec sapien commodo pharetra. Nunc sem lorem, elementum sed dictum ut, egestas nec nisi. Quisque porttitor ligula sed justo dictum, vitae lobortis elit dignissim. 
+format:
+    pdf:
+        include-in-header:
+            - \usepackage{jmlr2e}
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
