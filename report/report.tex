@@ -1,10 +1,11 @@
 \documentclass{article}
 \usepackage{jmlr2e}
+\usepackage{booktabs}
 \firstpageno{1}
 
 \begin{document}
 
-\title{Multivariate Time Series Regression of Sleep and Mood Data}
+\title{Multivariate Time Series Classification on Sleep and Mood Data}
 
 \author{\name Jeff Brozena \email brozena@psu.edu}
 \editor{None, really}
@@ -19,43 +20,21 @@
 
 \citep{ruwaardEcological}
 \citet{ruwaardEcological}
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ligula in magna sagittis interdum quis a ipsum. Donec non porta ipsum. Fusce maximus ligula malesuada ex ullamcorper, nec mattis justo iaculis. In in velit in orci cursus bibendum. Phasellus vel odio sit amet arcu posuere elementum. In nec diam sem. Suspendisse ac euismod nulla. Praesent scelerisque nunc dolor, ac porttitor nibh vehicula quis. Fusce eget justo ac mauris pellentesque consequat. Cras ante risus, dignissim consectetur porttitor quis, sagittis eget metus.
 
 Proin in pretium orci, ac accumsan est. Pellentesque porta placerat nisl id dignissim. Etiam neque enim, dapibus ac lorem vitae, hendrerit convallis neque. In hac habitasse platea dictumst. Phasellus sit amet nisl sit amet nulla pulvinar tincidunt quis sed mi. Ut nisl velit, vestibulum id tincidunt nec, ultrices vitae ex. Ut scelerisque rutrum nunc quis pretium. Ut suscipit nunc non quam iaculis, in ullamcorper tellus euismod. Fusce at facilisis ex.
 
-\begin{table}[]
-\begin{tabular}{|l|l|l|l|}
-\hline
-                 & Context           & Actors    & Responses \\ \hline
-all\_details     & predict\_relapse  & you       & 205       \\ \hline
-                 &                   & family    & 189       \\ \hline
-                 &                   & clinician & 193       \\ \hline
-                 & distinct\_changes & you       & 206       \\ \hline
-                 &                   & family    & 180       \\ \hline
-                 &                   & clinician & 195       \\ \hline
-                 & compare\_mood     & you       & 224       \\ \hline
-                 &                   & family    & 202       \\ \hline
-                 &                   & clinician & 211       \\ \hline
-timing\_category & predict\_relapse  & you       & 209       \\ \hline
-                 &                   & family    & 188       \\ \hline
-                 &                   & clinician & 192       \\ \hline
-                 & distinct\_changes & you       & 207       \\ \hline
-                 &                   & family    & 193       \\ \hline
-                 &                   & clinician & 195       \\ \hline
-                 & compare\_mood     & you       & 202       \\ \hline
-                 &                   & family    & 181       \\ \hline
-                 &                   & clinician & 187       \\ \hline
-timing\_amount   & predict\_relapse  & you       & 203       \\ \hline
-                 &                   & family    & 182       \\ \hline
-                 &                   & clinician & 189       \\ \hline
-                 & distinct\_changes & you       & 208       \\ \hline
-                 &                   & family    & 189       \\ \hline
-                 &                   & clinician & 195       \\ \hline
-                 & compare\_mood     & you       & 207       \\ \hline
-                 &                   & family    & 181       \\ \hline
-                 &                   & clinician & 193       \\ \hline
+\begin{tabular}{lr}
+\toprule
+{} &    0 \\
+\midrule
+irritable &  218 \\
+anxious   &  198 \\
+depressed &  229 \\
+elevated  &   84 \\
+\bottomrule
 \end{tabular}
-\end{table}
 
 Cras at ligula ex. Mauris dapibus ac augue in vestibulum. Curabitur facilisis arcu in ipsum iaculis vehicula. Nunc libero dolor, aliquam ut diam vel, interdum imperdiet dui. Etiam hendrerit enim eu felis dignissim finibus. Etiam a molestie dui, pellentesque feugiat ex. Sed sit amet risus ut libero efficitur rhoncus. Ut vitae sapien eget felis sollicitudin fringilla. Duis bibendum massa a arcu fermentum euismod non et leo.
 
