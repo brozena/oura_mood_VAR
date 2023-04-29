@@ -21,11 +21,10 @@
   of sleep data captured via the Oura Ring, a consumer-grade sleep tracking
   device, and self-reported mood data logged using eMood Tracker for iOS. After
   assessing the data for stationarity and computing the appropriate lag-length
-  selection, a vector autoregressive (VAR) model was employed along
-  with Granger causality tests to assess causal mechanisms within this
-  multivariate time series. Oura's nightly sleep quality score shown to Granger cause
-  self-reported presence of depressed mood using a VAR(3) model.
-\end{abstract}
+  selection, a vector autoregressive (VAR) model was employed along with Granger
+  causality tests to assess causal mechanisms within this multivariate time
+  series. Oura's nightly sleep quality score shown to Granger cause
+  self-reported presence of depressed mood using a VAR(3) model. \end{abstract}
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -33,8 +32,8 @@
 Long-term self-management of chronic illnesses such as bipolar disorder require
 an awareness of illness state over varying time scales.
 
-Self-tracking technologies have dramatically improved the quality of information that
-can be used to maintain awareness.
+Self-tracking technologies have dramatically improved the quality of information
+that can be used to maintain awareness.
 
 In the context of this specific illness, a volume of prior work has demonstrated
 the role of sleep quality as a leading indicator of mood stability. To this end,
@@ -46,10 +45,27 @@ that a given mood state could be understood by looking back at recent sleep
 trends. 
 
 \begin{table}[h]
+  \centering
+  \begin{tabular}{lr}
+  \toprule
+    \textbf{Sleep Scores} & \textbf{Value} \\ \midrule
+      Total nights & 1455 \\
+      Missing nights & 1 \\
+      Mean & 73.82 \\
+      SD & 12.36 \\
+      Max & 97.00 \\
+      Min & 30.00 \\ 
+   \bottomrule
+  \end{tabular}
+\caption{Descriptive statistics of sleep score data}
+\label{Sleep}
+\end{table}
+
+\begin{table}[h]
     \centering
     \begin{tabular}{ll}
     \toprule
-        \textbf{EMA Item} & \textbf{Count} \\ \midrule
+        \textbf{EMA Categories} & \textbf{Count} \\ \midrule
         irritable & 100 \\
         anxious & 88  \\
         depressed & 103  \\
