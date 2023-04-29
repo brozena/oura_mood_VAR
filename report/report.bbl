@@ -1,8 +1,102 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bose et~al.(2017)Bose, Hravnak, and Sereika]{boseVector2017}
+Eliezer Bose, Marilyn Hravnak, and Susan~M. Sereika.
+\newblock Vector {Autoregressive} ({VAR}) {Models} and {Granger} {Causality} in
+  {Time} {Series} {Analysis} in {Nursing} {Research}: {Dynamic} {Changes}
+  {Among} {Vital} {Signs} {Prior} to {Cardiorespiratory} {Instability} {Events}
+  as an {Example}.
+\newblock \emph{Nursing research}, 66\penalty0 (1):\penalty0 12--19, 2017.
+\newblock ISSN 0029-6562.
+\newblock \doi{10.1097/NNR.0000000000000193}.
+\newblock URL \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5161241/}.
+
+\bibitem[Gruber et~al.(2011)Gruber, Miklowitz, Harvey, Frank, Kupfer, Thase,
+  Sachs, and Ketter]{gruberSleep2011}
+June Gruber, David~J. Miklowitz, Allison~G. Harvey, Ellen Frank, David Kupfer,
+  Michael~E. Thase, Gary~S. Sachs, and Terence~A. Ketter.
+\newblock Sleep matters: {Sleep} functioning and course of illness in bipolar
+  disorder.
+\newblock \emph{Journal of Affective Disorders}, 134\penalty0 (1):\penalty0
+  416--420, November 2011.
+\newblock ISSN 0165-0327.
+\newblock \doi{10.1016/j.jad.2011.05.016}.
+\newblock URL
+  \url{https://www.sciencedirect.com/science/article/pii/S016503271100262X}.
+
+\bibitem[Harvey et~al.(2009)Harvey, Talbot, and Gershon]{harveySleep2009}
+Allison~G. Harvey, Lisa~S. Talbot, and Anda Gershon.
+\newblock Sleep {Disturbance} in {Bipolar} {Disorder} {Across} the {Lifespan}.
+\newblock \emph{Clinical Psychology: Science and Practice}, 16\penalty0
+  (2):\penalty0 256--277, 2009.
+\newblock ISSN 1468-2850.
+\newblock \doi{10.1111/j.1468-2850.2009.01164.x}.
+\newblock URL
+  \url{https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1468-2850.2009.01164.x}.
+\newblock \_eprint:
+  https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1468-2850.2009.01164.x.
+
+\bibitem[Jafarlou et~al.(2023)Jafarlou, Lai, Azimi, Mousavi, Labbaf, Jain,
+  Dutt, Borelli, and Rahmani]{jafarlouObjective2023}
+Salar Jafarlou, Jocelyn Lai, Iman Azimi, Zahra Mousavi, Sina Labbaf, Ramesh~C.
+  Jain, Nikil Dutt, Jessica~L. Borelli, and Amir Rahmani.
+\newblock Objective {Prediction} of {Next}-{Day}’s {Affect} {Using}
+  {Multimodal} {Physiological} and {Behavioral} {Data}: {Algorithm}
+  {Development} and {Validation} {Study}.
+\newblock \emph{JMIR Formative Research}, 7\penalty0 (1):\penalty0 e39425,
+  March 2023.
+\newblock \doi{10.2196/39425}.
+\newblock URL \url{https://formative.jmir.org/2023/1/e39425}.
+\newblock Company: JMIR Formative Research Distributor: JMIR Formative Research
+  Institution: JMIR Formative Research Label: JMIR Formative Research
+  Publisher: JMIR Publications Inc., Toronto, Canada.
+
+\bibitem[Lütkepohl(2005)]{lutkepohlNew2005}
+Helmut Lütkepohl.
+\newblock \emph{New introduction to multiple time series analysis}.
+\newblock New York : Springer, Berlin, 2005.
+\newblock ISBN 978-3-540-40172-8.
+\newblock OCLC: ocm61028971.
+
+\bibitem[Moshe et~al.(2021)Moshe, Terhorst, Opoku~Asare, Sander, Ferreira,
+  Baumeister, Mohr, and Pulkki-Råback]{moshePredicting2021}
+Isaac Moshe, Yannik Terhorst, Kennedy Opoku~Asare, Lasse~Bosse Sander, Denzil
+  Ferreira, Harald Baumeister, David~C. Mohr, and Laura Pulkki-Råback.
+\newblock Predicting {Symptoms} of {Depression} and {Anxiety} {Using}
+  {Smartphone} and {Wearable} {Data}.
+\newblock \emph{Frontiers in Psychiatry}, 12, 2021.
+\newblock ISSN 1664-0640.
+\newblock URL
+  \url{https://www.frontiersin.org/articles/10.3389/fpsyt.2021.625247}.
+
+\bibitem[Murray and Harvey(2010)]{murrayCircadian2010}
+Greg Murray and Allison Harvey.
+\newblock Circadian rhythms and sleep in bipolar disorder.
+\newblock \emph{Bipolar Disorders}, 12\penalty0 (5):\penalty0 459--472, 2010.
+\newblock ISSN 1399-5618.
+\newblock \doi{10.1111/j.1399-5618.2010.00843.x}.
+\newblock URL
+  \url{https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1399-5618.2010.00843.x}.
+\newblock \_eprint:
+  https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1399-5618.2010.00843.x.
+
+\bibitem[Perktold et~al.(2023)Perktold, Seabold, Sheppard, ChadFulton, Shedden,
+  Jbrockmendel, J-Grana6, Quackenbush, Arel-Bundock, McKinney, Langmore, Baker,
+  Gommers, Yogabonito, S-Scherrer, Zhurko, Brett, Giampieri, Liu, Millman,
+  Hobson, Vincent, Roy, Augspurger, Tvanzyl, Alexbrc, Hartley, Perez, Tamiya,
+  and Halchenko]{perktoldstatsmodels2023}
+Josef Perktold, Skipper Seabold, Kevin Sheppard, ChadFulton, Kerby Shedden,
+  Jbrockmendel, J-Grana6, Peter Quackenbush, Vincent Arel-Bundock, Wes
+  McKinney, Ian Langmore, Bart Baker, Ralf Gommers, Yogabonito, S-Scherrer,
+  Evgeny Zhurko, Matthew Brett, Enrico Giampieri, Yichuan Liu, Jarrod Millman,
+  Paul Hobson, Vincent, Pamphile Roy, Tom Augspurger, Tvanzyl, Alexbrc, Tyler
+  Hartley, Fernando Perez, Yuji Tamiya, and Yaroslav Halchenko.
+\newblock statsmodels/statsmodels: {Release} {Candidate} 0.14.0rc0, April 2023.
+\newblock URL \url{https://zenodo.org/record/593847}.
 
 \end{thebibliography}
