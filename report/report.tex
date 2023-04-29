@@ -54,6 +54,21 @@ aliquet blandit accumsan at nunc. Duis accumsan risus quis euismod
 ultrices. Vivamus pretium velit elit, at tincidunt tortor semper et.
 Nullam porttitor purus in faucibus rutrum. Quisque a nunc ex.
 
+\begin{table}[!hp]
+    \centering
+    \begin{tabular}{ll}
+    \toprule
+        \textbf{EMA Item} & \textbf{Count} \\ \midrule
+        irritable & 100 \\
+        anxious & 88  \\
+        depressed & 103  \\
+        elevated & 48  \\
+        \bottomrule
+    \end{tabular}
+\caption{Number of days where EMA item contains a non-zero value}
+\label{EMA}
+\end{table}
+
 In gravida dictum turpis sit amet luctus. Quisque congue, est eget
 porttitor malesuada, justo tellus consectetur tortor, eu suscipit ante
 lectus eget odio. Ut eget euismod eros, vitae mollis ante. Cras eleifend
@@ -108,23 +123,6 @@ a ultricies ex. Nulla at sapien mattis, lacinia quam eu, placerat
 sapien. Vestibulum eget iaculis sapien. Morbi urna ligula, sagittis in
 orci ac, rutrum fermentum tortor. Mauris at eros sit amet enim vulputate
 bibendum ut eget tellus.
-
-\begin{table}[!ht]
-\centering
-\begin{tabular}{lr}
-\toprule
-    \textbf{EMA Item} & \textbf{Frequency} \\ \midrule 
-    irritable & 218 \\
-    anxious & 198 \\
-    depressed & 229 \\
-    elevated & 84 \\
-  \bottomrule
-  \end{tabular}
-  \caption{EMA Item Frequency by Category}
-  \label{EMA}
-\end{table}
-
-
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -204,7 +202,7 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}
+\begin{figure}[!hp]
 \centering
   \includegraphics[width=0.8\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/decomposition.png}
 \caption{Decomposition of sleep time series}
@@ -218,7 +216,7 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}
+\begin{figure}[!hp]
 \centering
   \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/acf.png}
 \caption{Autocorrelation of sleep time series}
@@ -232,7 +230,7 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}
+\begin{figure}[!hp]
 \centering
   \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/pacf.png}
 \caption{Partial autocorrelation of sleep time series}
@@ -318,7 +316,7 @@ tincidunt sed sem ac porta. Phasellus in justo orci.
         \textbf{L2.score} & -0.020902 & 0.034834 & -0.600 & 0.548 \\ 
         \textbf{L2.average\_hrv} & -0.027687 & 0.022370 & -1.238 & 0.216 \\ 
         \textbf{L2.anxious} & 0.178654 & 0.540249 & 0.331 & 0.741 \\ 
-        \textbf{L2.depressed} & 1.427585 & 0.490653 & 2.910 & 0.004 \\ 
+        \textbf{L2.depressed} & 1.427585 & 0.490653 & 2.910 & \textbf{0.004} \\ 
         \textbf{L2.irritable} & -0.634113 & 0.500474 & -1.267 & 0.205 \\ 
         \textbf{L2.elevated} & -0.164427 & 0.771205 & -0.213 & 0.831 \\ 
         \textbf{L3.score} & 0.117166 & 0.031157 & 3.760 & 0.000 \\ 
