@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -15,6 +15,19 @@ Eliezer Bose, Marilyn Hravnak, and Susan~M. Sereika.
 \newblock ISSN 0029-6562.
 \newblock \doi{10.1097/NNR.0000000000000193}.
 \newblock URL \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5161241/}.
+
+\bibitem[de~Zambotti et~al.(2019)de~Zambotti, Rosas, Colrain, and
+  Baker]{dezambottiSleep2019}
+Massimiliano de~Zambotti, Leonardo Rosas, Ian~M. Colrain, and Fiona~C. Baker.
+\newblock The {Sleep} of the {Ring}: {Comparison} of the Ō{URA} {Sleep}
+  {Tracker} {Against} {Polysomnography}.
+\newblock \emph{Behavioral Sleep Medicine}, 17\penalty0 (2):\penalty0 124--136,
+  March 2019.
+\newblock ISSN 1540-2002.
+\newblock \doi{10.1080/15402002.2017.1300587}.
+\newblock URL \url{https://doi.org/10.1080/15402002.2017.1300587}.
+\newblock Publisher: Taylor \& Francis \_eprint:
+  https://doi.org/10.1080/15402002.2017.1300587.
 
 \bibitem[Gruber et~al.(2011)Gruber, Miklowitz, Harvey, Frank, Kupfer, Thase,
   Sachs, and Ketter]{gruberSleep2011}
@@ -122,18 +135,9 @@ Greg Murray and Allison Harvey.
 \newblock \_eprint:
   https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1399-5618.2010.00843.x.
 
-\bibitem[Perktold et~al.(2023)Perktold, Seabold, Sheppard, ChadFulton, Shedden,
-  Jbrockmendel, J-Grana6, Quackenbush, Arel-Bundock, McKinney, Langmore, Baker,
-  Gommers, Yogabonito, S-Scherrer, Zhurko, Brett, Giampieri, Liu, Millman,
-  Hobson, Vincent, Roy, Augspurger, Tvanzyl, Alexbrc, Hartley, Perez, Tamiya,
-  and Halchenko]{perktoldstatsmodels2023}
-Josef Perktold, Skipper Seabold, Kevin Sheppard, ChadFulton, Kerby Shedden,
-  Jbrockmendel, J-Grana6, Peter Quackenbush, Vincent Arel-Bundock, Wes
-  McKinney, Ian Langmore, Bart Baker, Ralf Gommers, Yogabonito, S-Scherrer,
-  Evgeny Zhurko, Matthew Brett, Enrico Giampieri, Yichuan Liu, Jarrod Millman,
-  Paul Hobson, Vincent, Pamphile Roy, Tom Augspurger, Tvanzyl, Alexbrc, Tyler
-  Hartley, Fernando Perez, Yuji Tamiya, and Yaroslav Halchenko.
-\newblock statsmodels/statsmodels: {Release} {Candidate} 0.14.0rc0, April 2023.
-\newblock URL \url{https://zenodo.org/record/593847}.
+\bibitem[Seabold and Perktold(2010)]{seabold2010statsmodels}
+Skipper Seabold and Josef Perktold.
+\newblock statsmodels: {Econometric} and statistical modeling with python.
+\newblock In \emph{9th python in science conference}, 2010.
 
 \end{thebibliography}

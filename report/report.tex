@@ -5,7 +5,7 @@
 
 \begin{document}
 
-\title{Vector Autoregression (VAR) of Longitudinal Sleep and EMA Mood Data}
+\title{Vector Autoregression (VAR) of Longitudinal Sleep and Self-report Mood Data}
 
 \author{\name Jeff Brozena \email brozena@psu.edu}
 \editor{Could use one}
@@ -33,15 +33,15 @@
 \section{Introduction}\label{introduction}}
 
 Long-term self-management of chronic illnesses such as bipolar disorder require
-persistent awareness of illness state over long periods of time and at
-varying time scales \citep{murnane2016SelfmonitoringPracticesAttitudes,
+persistent awareness of illness state over long periods of time and at varying
+time scales \citep{murnane2016SelfmonitoringPracticesAttitudes,
 morton2018TakingBackReins, majid2022ExploringSelftrackingPractices}. Remaining
-consistently aware of key indicators signalling the onset of a chronic
-condition allow individuals a chance at early intervention to reduce the
-severity of a givene episode. For example, an individual may modify behavior,
-engage their health practitioners, or adjust medication dosage. However nuanced,
-bipolar disorder is an illness that often degrades an individual's
-self-awareness and capacity for self-monitoring during symptomatic periods.
+consistently aware of key indicators signalling the onset of a chronic condition
+allow individuals a chance at early intervention to reduce the severity of a
+givene episode. For example, an individual may modify behavior, engage their
+health practitioners, or adjust medication dosage. However nuanced, bipolar
+disorder is an illness that often degrades an individual's self-awareness and
+capacity for self-monitoring during symptomatic periods.
 
 In the context of this specific illness, a volume of prior work has demonstrated
 the vital role of sleep in order to promote mood stability and prevent
@@ -64,76 +64,44 @@ the aforementioned interplay of sleep and mood, this combination of subjective
 and objective tracking creates the possibility of longitudinal analysis --- and
 potentially deepens one's capacity for self-awareness.
 
-Following four years of consistent sleep and mood tracking, I sought to
-more formally interpret the data I had collected to quantify what I had
-previously intuited: that certain mood states could be understood (and
-potentially even predicted) by recent sleep trends. Indeed, this
-intuition has been demonstrated quantitatively in existing literature
-\citep{boseVector2017, moshePredicting2021, jafarlouObjective2023}. As this work
-also demonstrates, combining data from consumer wearable technology and
-subjective self-report logs allows for a more comprehensive picture of health.
-
+Following four years of consistent sleep and mood tracking, I sought to more
+formally interpret the data I had collected to quantify what I had previously
+intuited: that certain mood states could be understood (and potentially even
+predicted) by recent sleep trends. Indeed, this intuition has been demonstrated
+quantitatively in existing literature \citep{boseVector2017,
+moshePredicting2021, jafarlouObjective2023}. As this work also demonstrates,
+combining data from consumer wearable technology and subjective self-report logs
+allows for a more comprehensive picture of health.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
-Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
-consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
-varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
-luctus dapibus. Phasellus eget lectus id ligula sollicitudin consequat
-et a nunc. Class aptent taciti sociosqu ad litora torquent per confaubia
-nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
-condimentum, consectetur fermentum magna. Praesent commodo mauris non
-massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
-volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
-
-In gravida dictum turpis sit amet luctus. Quisque congue, est eget
-porttitor malesuada, justo tellus consectetur tortor, eu suscipit ante
-lectus eget odio. Ut eget euismod eros, vitae mollis ante. Cras eleifend
-fringilla ante quis placerat. Morbi dignissim ante lectus, at facilisis
-nunc eleifend id. Sed felis risus, venenatis sit amet massa id, porta
-finibus velit. Fusce mattis faucibus ante quis blandit. Phasellus
-iaculis rutrum quam, id iaculis augue cursus nec. Curabitur eu velit
-sapien. Phasellus ligula lacus, cursus a felis a, aliquam dapibus massa.
-Nulla sollicitudin viverra elementum. Nulla facilisi. Etiam felis augue,
-consectetur vitae commodo placerat, aliquet sed nulla. Nunc urna libero,
-eleifend nec aliquet fringilla, vehicula nec tortor.
-
-Donec scelerisque, nisl laoreet viverra euismod, lacus sem ultrices
-felis, vel suscipit justo est eu nisl. Phasellus consequat aliquam
-ultrices. Cras eleifend tortor vel tortor convallis, ac imperdiet metus
-accumsan. Aenean condimentum vehicula sapien eget molestie. Maecenas a
-ultricies est. Duis congue posuere nunc pharetra iaculis. Donec lacinia
-nisl turpis, ac bibendum lorem dictum ut. Pellentesque elementum
-faucibus urna in ultricies. Nunc at ullamcorper mi, ut pellentesque
-mauris.
-
-Nunc quis laoreet odio. Maecenas sit amet leo pharetra, venenatis risus
-a, auctor diam. Quisque nulla ligula, accumsan ac convallis sed,
-facilisis eu tortor. Vestibulum euismod arcu at est porttitor eleifend
-eget sit amet eros. Mauris felis eros, mollis vitae ornare id, congue
-non leo. Integer posuere elit nulla, et sagittis ante sagittis ut.
-Suspendisse potenti. Nulla vestibulum varius mauris at gravida. Duis sed
-ante a velit congue faucibus. Donec efficitur eros ac lorem euismod
-aliquam. Ut pharetra, urna vitae sagittis ultrices, ante augue rutrum
-velit, non tincidunt urna arcu et neque. Cras eleifend posuere nibh vel
-rutrum. Fusce eu purus dignissim, egestas dolor quis, congue est.
-
+A multivariate time series analysis was performed using a vector autoregressive
+(VAR) model fit using ordinary least squares. An optimal lag order was first
+obtained using a combination of Akaike Information Criterion (AIC), Bayesian
+Information Criterion (BIC), Hannan-Quinn Information Criterion (HQIC), and
+final prediction error (FPE). After fitting a VAR(3) model on the multiple time
+series data (outlined below), a Granger causality test was performed in order to
+assess the predictive relationships between variables. Finally, an impulse
+response analysis was plotted to further explore the temporal relationships
+between variables, specifically between sleep, heartrate variability, and
+self-reported mood. I will outline these analysis steps in greater detail in the
+sections that follow.
 
 \hypertarget{dataset-description}{%
 \subsection{Dataset Description}\label{dataset-description}}
 
-Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
-consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
-varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
-luctus dapibus. Phasellus eget lectus id ligula sollicitudin consequat
-et a nunc. Class aptent taciti sociosqu ad litora torquent per confaubia
-nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
-condimentum, consectetur fermentum magna. Praesent commodo mauris non
-massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
-volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
+The sleep score dataset was created using the second- and third-generation Oura
+Ring. As detailed in Table \ref{Sleep}, my use of the Oura Ring was consistent across
+time. The proprietary Oura sleep score is on a scale of 1 to 100 and
+incorporates a variety of sensor-based measures (i.e., heartrate variability,
+resting heartrate, body temperature) across time. Although the specifics of this
+algorithm are not public, the Oura Ring has been found to produce
+accurate measures of sleep timing and heartrate variability when compared
+against polysomnography \citep{dezambottiSleep2019}. The dataset contains 1,455
+nights of sleep bout data occuring between February, 2019 and March, 2023.
 
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \begin{tabular}{lr}
   \toprule
@@ -162,7 +130,7 @@ augue pharetra vestibulum ac ut mi. Phasellus efficitur dignissim nisl.
 Vivamus ornare ex vel dui rutrum convallis. Sed nec urna fermentum augue
 facilisis ultricies.
 
-\begin{table}[h]
+\begin{table}[ht]
     \centering
     \begin{tabular}{ll}
     \toprule
@@ -191,7 +159,7 @@ volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
 \hypertarget{vector-autoregression}{%
 \subsection{Vector Autoregression}\label{vector-autoregression}}
 
-\citep{perktoldstatsmodels2023}
+\citep{seabold2010statsmodels}
 
 \citep{lutkepohlNew2005}
 
@@ -262,13 +230,6 @@ condimentum, loremh non tempus auctor, mauris arcu tempus libero, ac
 venenatis odio enim at odio. Maecenas egestas sit amet lorem in aliquet.
 Aenean nec eros ante.
 
-Nunc eget risus nec odio commodo feugiat nec ac arcu. Maecenas laoreet
-lorem ut mi tristique ultricies. Maecenas lacinia fermentum euismod.
-Praesent quis ornare urna. Orci varius natoque penatibus et magnis dis
-parturient montes, nascetur ridiculus mus. Nunc non ornare risus. Nunc
-vulputate risus a dapibus eleifend. Aenean justo lacus, dignissim eget
-gravida sed, laoreet eu neque. Vivamus volutpat risus non ligula feugiat
-sollicitudin. Ut nec porttitor ipsum.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -297,7 +258,7 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}[hp]
+\begin{figure}[h]
 \centering
   \includegraphics[width=0.8\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/decomposition.png}
 \caption{Decomposition of sleep time series}
@@ -311,7 +272,7 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}[hp]
+\begin{figure}[h]
 \centering
   \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/acf.png}
 \caption{Autocorrelation of sleep time series}
@@ -325,7 +286,7 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}[hp]
+\begin{figure}[h]
 \centering
   \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/pacf.png}
 \caption{Partial autocorrelation of sleep time series}
@@ -411,7 +372,7 @@ tincidunt sed sem ac porta. Phasellus in justo orci.
         \textbf{L2.score} & -0.020902 & 0.034834 & -0.600 & 0.548 \\ 
         \textbf{L2.average\_hrv} & -0.027687 & 0.022370 & -1.238 & 0.216 \\ 
         \textbf{L2.anxious} & 0.178654 & 0.540249 & 0.331 & 0.741 \\ 
-        \textbf{L2.depressed} & 1.427585 & 0.490653 & 2.910 & \textbf{0.004} \\ 
+        \textbf{L2.depressed} & \textbf{1.427585} & 0.490653 & 2.910 & \textbf{0.004} \\ 
         \textbf{L2.irritable} & -0.634113 & 0.500474 & -1.267 & 0.205 \\ 
         \textbf{L2.elevated} & -0.164427 & 0.771205 & -0.213 & 0.831 \\ 
         \textbf{L3.score} & 0.117166 & 0.031157 & 3.760 & 0.000 \\ 
@@ -463,7 +424,7 @@ turpis.
 \subsection{Impulse Response Analysis}\label{impulse-response-analysis-1}}
 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
   \includegraphics[width=0.9\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/IRF_all.png}
   \caption{Plot of Impulse Response Function, Lag 0 to 10}
