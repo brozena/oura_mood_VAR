@@ -13,57 +13,37 @@
 \maketitle
 
 \begin{abstract}%
-  Self-tracking is one of many behaviors commonly involved with long-term
+  Self-tracking is one of many behaviors involved in the long-term
   self-management of chronic illnesses. As consumer-grade wearable
-  sensors have rendered the collection of health-related behaviors commonplace,
+  sensors have made the collection of health-related behaviors commonplace,
   the quality, volume, and availability of such data has dramatically improved.
   This exploratory longitudinal N-of-1 study quantitatively assesses four years
   of sleep data captured via the Oura Ring, a consumer-grade sleep tracking
-  device, and self-reported mood data. After
+  device, and self-reported mood data logged using eMood Tracker for iOS. After
   assessing the data for stationarity and computing the appropriate lag-length
-  selection, a vector autoregressive (VAR) model was employed
-  with Granger causality tests to assess the causal mechanisms within this
-  multivariate time series. Nightly sleep quality scores were shown to Granger cause
+  selection, a vector autoregressive (VAR) model was employed along
+  with Granger causality tests to assess causal mechanisms within this
+  multivariate time series. Oura's nightly sleep quality score shown to Granger cause
   self-reported presence of depressed mood using a VAR(3) model.
 \end{abstract}
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Cras at ligula ex. Mauris dapibus ac augue in vestibulum. Curabitur
-facilisis arcu in ipsum iaculis vehicula. Nunc libero dolor, aliquam ut
-diam vel, interdum imperdiet dui. Etiam hendrerit enim eu felis
-dignissim finibus. Etiam a molestie dui, pellentesque feugiat ex. Sed
-sit amet risus ut libero efficitur rhoncus. Ut vitae sapien eget felis
-sollicitudin fringilla. Duis bibendum massa a arcu fermentum euismod non
-et leo.
+Long-term self-management of chronic illnesses such as bipolar disorder require
+an awareness of illness state over varying time scales.
 
-Nunc efficitur, leo eget tristique dapibus, leo eros accumsan lacus,
-eget porta ipsum purus in mi. Etiam facilisis lectus vehicula, sagittis
-libero nec, bibendum dui. Fusce pulvinar in urna in volutpat. Etiam
-blandit odio lacus, quis dapibus risus iaculis facilisis. Fusce sagittis
-urna sem, vel dapibus ligula pellentesque eu. Quisque euismod massa nec
-elementum porta. Pellentesque vel eleifend est. Praesent gravida
-suscipit arcu, a rutrum dui. Sed a ultrices mi. Nunc vitae dolor purus.
-Curabitur sed dictum odio.
+Self-tracking technologies have dramatically improved the quality of information that
+can be used to maintain awareness.
 
-Quisque aliquam tempus commodo. Pellentesque at urna lectus. Vivamus ac
-sapien dapibus, placerat lacus eu, ullamcorper lectus. Duis in egestas
-dui. Nullam et tristique magna. Quisque et mauris ullamcorper, bibendum
-erat in, ullamcorper erat. Praesent blandit massa ornare, posuere dui
-at, tincidunt dolor. Nullam iaculis felis nec metus tincidunt, non
-sodales nibh venenatis.
+In the context of this specific illness, a volume of prior work has demonstrated
+the role of sleep quality as a leading indicator of mood stability. To this end,
+I have consistently tracked sleep and mood scores for the last four years.
 
-Nunc aliquet diam nibh, sit amet pharetra metus luctus at. Maecenas
-tincidunt ipsum auctor dolor elementum lobortis. Vestibulum erat sem,
-bibendum a laoreet nec, scelerisque a odio. Etiam luctus leo erat, ac
-ornare quam porta at. Mauris ornare et lacus quis rutrum. Nulla
-facilisi. Phasellus consectetur tortor mauris, at pellentesque dui
-iaculis interdum. Sed ut sem nec eros sodales pulvinar. Sed id nibh
-vehicula, congue nulla eu, aliquet mauris. Donec vitae eros vel nunc
-aliquet blandit accumsan at nunc. Duis accumsan risus quis euismod
-ultrices. Vivamus pretium velit elit, at tincidunt tortor semper et.
-Nullam porttitor purus in faucibus rutrum. Quisque a nunc ex.
+Following four years of consistent and deliberate tracking, I sought to
+interpret those trends statistically to quantify what I had previously intuited:
+that a given mood state could be understood by looking back at recent sleep
+trends. 
 
 \begin{table}[h]
     \centering
@@ -147,6 +127,20 @@ nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
 condimentum, consectetur fermentum magna. Praesent commodo mauris non
 massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
 volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
+
+\hypertarget{dataset-description}{%
+\subsection{Dataset Description}\label{dataset-description}}
+
+Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
+consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
+varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
+luctus dapibus. Phasellus eget lectus id ligula sollicitudin consequat
+et a nunc. Class aptent taciti sociosqu ad litora torquent per confaubia
+nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
+condimentum, consectetur fermentum magna. Praesent commodo mauris non
+massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
+volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
+
 
 \hypertarget{vector-autoregression}{%
 \subsection{Vector Autoregression}\label{vector-autoregression}}
