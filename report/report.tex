@@ -24,7 +24,7 @@
   assessing the data for stationarity and computing the appropriate lag-length
   selection, a vector autoregressive (VAR) model was fit along with Granger
   causality tests to assess causal mechanisms within this multivariate time
-  series. Oura's nightly sleep quality score shown to Granger cause
+  series. Oura's nightly sleep quality score shown to Granger-cause
   self-reported presence of depressed mood using a VAR(3) model. 
 
 \end{abstract}
@@ -33,76 +33,46 @@
 \section{Introduction}\label{introduction}}
 
 Long-term self-management of chronic illnesses such as bipolar disorder require
-an awareness of illness state over varying time scales
-\citep{murnane2016SelfmonitoringPracticesAttitudes, morton2018TakingBackReins, majid2022ExploringSelftrackingPractices}. Self-tracking technologies have dramatically improved the quality of information
-that can be used to maintain awareness.
+persistent awareness of illness state over long periods of time and at
+varying time scales \citep{murnane2016SelfmonitoringPracticesAttitudes,
+morton2018TakingBackReins, majid2022ExploringSelftrackingPractices}. Remaining
+consistently aware of key indicators signalling the onset of a chronic
+condition allow individuals a chance at early intervention to reduce the
+severity of a givene episode. For example, an individual may modify behavior,
+engage their health practitioners, or adjust medication dosage. However nuanced,
+bipolar disorder is an illness that often degrades an individual's
+self-awareness and capacity for self-monitoring during symptomatic periods.
 
 In the context of this specific illness, a volume of prior work has demonstrated
-the role of sleep quality as a leading indicator of mood stability
-\citep{harveySleep2009,murrayCircadian2010,gruberSleep2011}.
+the vital role of sleep in order to promote mood stability and prevent
+symptomatic episodes
+\citep{harveySleep2009,murrayCircadian2010,gruberSleep2011}. Although the
+particulars of this topic fall beyond the scope of this paper, these nuanced
+relationships may in fact be self-reinforcing and bidirectional --- poor sleep
+may lead to episodic onset, which may also lead to worsening (or shortening)
+sleep bouts.
 
-Following four years of consistent tracking, I sought to interpret those trends
-statistically to quantify what I had previously intuited: that a given mood
-state could be understood by looking back at recent sleep trends.
+Given the importance of sleep in the ongoing management of this illness,
+accurate consumer-grade alternatives to polysomnography (considered the gold
+standard of sleep tracking) have emerged over the last few years. Indeed,
+comparatively inexpensive sleep tracking technologies like the Oura Ring have
+dramatically improved the quality of information that can be used to augment and
+inform these self-monitoring activities. Objective sensor-based tracking
+technology can be complemented with subjective self-report measures in order to
+form a more complete picture of physical and mental health across time. Given
+the aforementioned interplay of sleep and mood, this combination of subjective
+and objective tracking creates the possibility of longitudinal analysis --- and
+potentially deepens one's capacity for self-awareness.
 
-\begin{table}[h]
-  \centering
-  \begin{tabular}{lr}
-  \toprule
-     & \textbf{Value}\\ \midrule
-      Total nights & 1455 \\
-      Missing nights & 1 \\
-      Mean & 73.82 \\
-      SD & 12.36 \\
-      Max & 97.00 \\
-      Min & 30.00 \\
-   \bottomrule
-  \end{tabular}
-\caption{Descriptive statistics of Oura Ring sleep score data}
-\label{Sleep}
-\end{table}
+Following four years of consistent sleep and mood tracking, I sought to
+more formally interpret the data I had collected to quantify what I had
+previously intuited: that certain mood states could be understood (and
+potentially even predicted) by recent sleep trends. Indeed, this
+intuition has been demonstrated quantitatively in existing literature
+\citep{boseVector2017, moshePredicting2021, jafarlouObjective2023}. As this work
+also demonstrates, combining data from consumer wearable technology and
+subjective self-report logs allows for a more comprehensive picture of health.
 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{ll}
-    \toprule
-        \textbf{EMA Categories} & \textbf{Count} \\ \midrule
-        irritable & 100 \\
-        anxious & 88  \\
-        depressed & 103  \\
-        elevated & 48  \\
-        \bottomrule
-    \end{tabular}
-\caption{Count of days where EMA item contains a non-zero value}
-\label{EMA}
-\end{table}
-
-Aliquam tristique, sem id venenatis pellentesque, elit ante auctor arcu,
-ac commodo tellus ante vel massa. Praesent placerat tristique tellus sed
-elementum. Etiam vehicula dolor non libero blandit, eu scelerisque felis
-pulvinar. Ut ac bibendum ante. Integer consequat, nisi in placerat
-dictum, nibh tellus feugiat est, id tristique risus magna venenatis
-lectus. Nulla viverra nulla mi, in feugiat velit pharetra dictum. Proin
-id viverra mauris. Morbi a pellentesque nisl, at volutpat ligula. Donec
-tristique facilisis felis, et euismod mauris. Suspendisse ac massa quis
-augue pharetra vestibulum ac ut mi. Phasellus efficitur dignissim nisl.
-Vivamus ornare ex vel dui rutrum convallis. Sed nec urna fermentum augue
-facilisis ultricies.
-
-\citet{boseVector2017}
-\citep{moshePredicting2021}
-\citep{jafarlouObjective2023}
-
-Pellentesque finibus, felis ut ullamcorper pretium, sem risus tempor
-risus, ac vestibulum nibh est eu eros. Nunc ut nibh aliquam, tincidunt
-nulla nec, ultricies ante. Quisque in neque dui. Phasellus tincidunt
-pretium condimentum. Sed blandit, orci et dictum dapibus, nisi elit
-maximus urna, vel varius risus velit at nulla. Fusce malesuada sem vel
-neque suscipit maximus. Morbi id sem non dolor molestie elementum. Proin
-a ultricies ex. Nulla at sapien mattis, lacinia quam eu, placerat
-sapien. Vestibulum eget iaculis sapien. Morbi urna ligula, sagittis in
-orci ac, rutrum fermentum tortor. Mauris at eros sit amet enim vulputate
-bibendum ut eget tellus.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -163,6 +133,51 @@ condimentum, consectetur fermentum magna. Praesent commodo mauris non
 massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
 volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lr}
+  \toprule
+     & \textbf{Value}\\ \midrule
+      Total nights & 1455 \\
+      Missing nights & 1 \\
+      Mean & 73.82 \\
+      SD & 12.36 \\
+      Max & 97.00 \\
+      Min & 30.00 \\
+   \bottomrule
+  \end{tabular}
+\caption{Descriptive statistics of Oura Ring sleep score data}
+\label{Sleep}
+\end{table}
+
+Aliquam tristique, sem id venenatis pellentesque, elit ante auctor arcu,
+ac commodo tellus ante vel massa. Praesent placerat tristique tellus sed
+elementum. Etiam vehicula dolor non libero blandit, eu scelerisque felis
+pulvinar. Ut ac bibendum ante. Integer consequat, nisi in placerat
+dictum, nibh tellus feugiat est, id tristique risus magna venenatis
+lectus. Nulla viverra nulla mi, in feugiat velit pharetra dictum. Proin
+id viverra mauris. Morbi a pellentesque nisl, at volutpat ligula. Donec
+tristique facilisis felis, et euismod mauris. Suspendisse ac massa quis
+augue pharetra vestibulum ac ut mi. Phasellus efficitur dignissim nisl.
+Vivamus ornare ex vel dui rutrum convallis. Sed nec urna fermentum augue
+facilisis ultricies.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ll}
+    \toprule
+        \textbf{EMA Categories} & \textbf{Count} \\ \midrule
+        irritable & 100 \\
+        anxious & 88  \\
+        depressed & 103  \\
+        elevated & 48  \\
+        \bottomrule
+    \end{tabular}
+\caption{Count of days where EMA item contains a non-zero value}
+\label{EMA}
+\end{table}
+
+
 Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
 consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
 varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
@@ -177,7 +192,6 @@ volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
 \subsection{Vector Autoregression}\label{vector-autoregression}}
 
 \citep{perktoldstatsmodels2023}
-
 
 \citep{lutkepohlNew2005}
 
@@ -502,25 +516,6 @@ luctus. In varius quam efficitur nulla efficitur sodales eget in purus.
 Quisque sagittis erat nec bibendum eleifend. Integer gravida nibh a
 commodo finibus. Nam semper sapien at mauris efficitur pretium.
 Phasellus quis egestas nunc.
-
-Cras egestas, diam id fringilla suscipit, arcu ex vehicula nisl, quis
-efficitur nibh neque cursus massa. Suspendisse nulla metus, scelerisque
-id sodales eu, bibendum et elit. Curabitur in tempor velit. Aliquam
-cursus eget tortor a ornare. Nam nec eleifend lectus. Morbi viverra,
-ante vel imperdiet tincidunt, dui leo mattis sapien, ullamcorper aliquam
-dolor eros vitae nibh. In metus ipsum, ullamcorper ac magna ut,
-condimentum egestas magna. Nulla eu varius libero, eget condimentum
-orci. Curabitur dapibus lorem ac vulputate euismod. Maecenas nec enim ac
-lectus rutrum maximus eget ac elit. Praesent tellus sapien, sagittis nec
-sagittis at, interdum ac nisi.
-
-Curabitur vitae scelerisque magna. Nullam aliquet eleifend mi id
-ullamcorper. Nullam nunc nisi, auctor vitae eros a, facilisis fermentum
-purus. In malesuada risus quis urna tincidunt, id cursus quam dictum.
-Curabitur id tellus arcu. Cras rutrum euismod ipsum vel bibendum. Nulla
-sit amet est velit. Praesent ac urna suscipit, porta lectus vel,
-bibendum est. Nam vel urna efficitur, placerat risus in, viverra velit.
-Mauris tincidunt eget neque ac pharetra. Morbi nec lobortis massa.
 
 \bibliography{papers}
 

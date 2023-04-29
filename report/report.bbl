@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -63,6 +63,30 @@ Helmut Lütkepohl.
 \newblock ISBN 978-3-540-40172-8.
 \newblock OCLC: ocm61028971.
 
+\bibitem[Majid et~al.(2022)Majid, Morriss, Figueredo, and
+  Reeves]{majid2022ExploringSelftrackingPractices}
+Shazmin Majid, Richard Morriss, Grazziela Figueredo, and Stuart Reeves.
+\newblock Exploring self-tracking practices for those with lived experience of
+  bipolar disorder: {Learning} from combined principles of {Patient} and
+  {Public} {Involvement} and {HCI}.
+\newblock In \emph{Designing {Interactive} {Systems} {Conference}}, pages
+  1907--1920, Virtual Event Australia, June 2022. ACM.
+\newblock ISBN 978-1-4503-9358-4.
+\newblock \doi{10.1145/3532106.3533531}.
+\newblock URL \url{https://dl.acm.org/doi/10.1145/3532106.3533531}.
+
+\bibitem[Morton et~al.(2018)Morton, Michalak, Hole, Buzwell, and
+  Murray]{morton2018TakingBackReins}
+Emma Morton, Erin~E. Michalak, Rachelle Hole, Simone Buzwell, and Greg Murray.
+\newblock ‘{Taking} back the reins’ – {A} qualitative study of the
+  meaning and experience of self-management in bipolar disorder.
+\newblock \emph{Journal of Affective Disorders}, 228:\penalty0 160--165, March
+  2018.
+\newblock ISSN 0165-0327.
+\newblock \doi{10.1016/j.jad.2017.12.018}.
+\newblock URL
+  \url{https://www.sciencedirect.com/science/article/pii/S0165032717317913}.
+
 \bibitem[Moshe et~al.(2021)Moshe, Terhorst, Opoku~Asare, Sander, Ferreira,
   Baumeister, Mohr, and Pulkki-Råback]{moshePredicting2021}
 Isaac Moshe, Yannik Terhorst, Kennedy Opoku~Asare, Lasse~Bosse Sander, Denzil
@@ -73,6 +97,19 @@ Isaac Moshe, Yannik Terhorst, Kennedy Opoku~Asare, Lasse~Bosse Sander, Denzil
 \newblock ISSN 1664-0640.
 \newblock URL
   \url{https://www.frontiersin.org/articles/10.3389/fpsyt.2021.625247}.
+
+\bibitem[Murnane et~al.(2016)Murnane, Cosley, Chang, Guha, Frank, Gay, and
+  Matthews]{murnane2016SelfmonitoringPracticesAttitudes}
+Elizabeth~L Murnane, Dan Cosley, Pamara Chang, Shion Guha, Ellen Frank, Geri
+  Gay, and Mark Matthews.
+\newblock Self-monitoring practices, attitudes, and needs of individuals with
+  bipolar disorder: implications for the design of technologies to manage
+  mental health.
+\newblock \emph{Journal of the American Medical Informatics Association},
+  23\penalty0 (3):\penalty0 477--484, May 2016.
+\newblock ISSN 1067-5027.
+\newblock \doi{10.1093/jamia/ocv165}.
+\newblock URL \url{https://doi.org/10.1093/jamia/ocv165}.
 
 \bibitem[Murray and Harvey(2010)]{murrayCircadian2010}
 Greg Murray and Allison Harvey.
