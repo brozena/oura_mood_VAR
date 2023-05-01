@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -170,6 +170,13 @@ Greg Murray and Allison Harvey.
 Skipper Seabold and Josef Perktold.
 \newblock statsmodels: {Econometric} and statistical modeling with python.
 \newblock In \emph{9th python in science conference}, 2010.
+
+\bibitem[Smith and {others}(2017)]{pmdarima}
+Taylor~G. Smith and {others}.
+\newblock {\textless}span
+  class="nocase"{\textgreater}pmdarima{\textless}/span{\textgreater}: {ARIMA}
+  estimators for {Python}, 2017.
+\newblock URL \url{http://www.alkaline-ml.com/pmdarima}.
 
 \bibitem[{The pandas development team}(2020)]{reback2020pandas}
 {The pandas development team}.

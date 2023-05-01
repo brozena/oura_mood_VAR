@@ -26,7 +26,7 @@
   selection, a vector autoregressive (VAR) model was fit along with Granger
   causality tests to assess causal mechanisms within this multivariate time
   series. Oura's nightly sleep quality score shown to Granger-cause
-  self-reported presence of depressed mood using a VAR(3) model. 
+  self-reported presence of depressed and anxious moods using a VAR(2) model. 
 
 \end{abstract}
 
@@ -219,46 +219,53 @@ The contents of this dataset are outlined in Table \ref{EMA}.
 \hypertarget{data-analysis}{%
 \subsection{Data Analysis}\label{data-analysis}}
 
-All analysis were performed in Python version 3.11.0 \citep{Python} using Pandas
-1.5.3 \citep{reback2020pandas} for data preprocessing and statsmodels 0.13.5
-\citep{seabold2010statsmodels} for modeling.
+All analysis were performed in Python version 3.11.0 \citep{Python} using
+\texttt{pandas} 1.5.3 \citep{reback2020pandas} for data preprocessing and
+\texttt{statsmodels} 0.13.5 \citep{seabold2010statsmodels} for modeling.
+Dickey-Fuller tests of stationarity were performed using \texttt{statsmodels}
+and the \texttt{pymdarima} library \citep{pmdarima}, a clone of R's
+\texttt{auto.arima}.
 
 \hypertarget{stationarity-decomposition-and-autocorrelation}{%
 \subsection{Stationarity, Decomposition, and
 Autocorrelation}\label{stationarity-decomposition-and-autocorrelation}}
 
-Sed ut lobortis ligula. Nunc vel justo cursus, consequat lectus vel,
-accumsan libero. Etiam lectus nisl, varius in feugiat nec, varius id
-ligula. Fusce scelerisque pharetra nisl. Maecenas in finibus nisl, in
-sagittis dolor. Fusce dictum cursus condimentum. Nullam posuere mauris
-vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
-faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
-cursus nunc vitae porttitor malesuada.
+A stationary time series contains no periodic fluctuation ("trend"). Without
+stationarity, the means and correlations given by a model will not accurately
+describe a time series' true signal \citep{boseVector2017}. If a time series is
+found not to be stationary, an approach known as differencing can be applied to
+achieve stationarity. The Dickey-Fuller test is one mechanism to determine
+whether a time series is stationary.
+
+Two Dickey-Fuller tests were performed on the sleep score time series, first via
+\texttt{statsmodels} and then, additionally, using \texttt{pymdarima} to assess
+the need for differencing. The \texttt{statsmodels} approach
+\citet{seabold2020statsmodels}, an Augmented Dickey-Fuller test (ADF), yielded a
+significant \textit{p}-value of .001 indicating support for the null hypothesis
+that the time series is not stationary. However, the \texttt{pymdarima} approach
+\citet{pymdarima}, which performed ADF using an alpha value of 0.05, yielded a
+non-significant \textit{p}-value of 0.01 indicating that no differencing was
+required in order to produce a stationary time series. For the purposes of this
+study, I followed the results of the \texttt{pymdarima} library and assumed
+stationarity.
+
+An exploratory time series decomposition visualization was created to better
+understand the presence of trend in the sleep score dataset. Figure
+\ref{Decomposition} contains these results.
+
 
 \begin{figure}[hb]
 \centering
   \includegraphics[width=0.8\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/decomposition.png}
 \caption{Decomposition of sleep time series}
+\label{Decomposition}
 \end{figure}
-
-Sed ut lobortis ligula. Nunc vel justo cursus, consequat lectus vel,
-accumsan libero. Etiam lectus nisl, varius in feugiat nec, varius id
-ligula. Fusce scelerisque pharetra nisl. Maecenas in finibus nisl, in
-sagittis dolor. Fusce dictum cursus condimentum. Nullam posuere mauris
-vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
-faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
-cursus nunc vitae porttitor malesuada.
 
 \begin{figure}[hb]
   \centering
   \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/acf.png}
 \caption{Autocorrelation of sleep time series}
 \end{figure}
-
-Sed ut lobortis ligula. Nunc vel justo cursus, consequat lectus vel,
-accumsan libero. Etiam lectus nisl, varius in feugiat nec, varius id
-ligula. Fusce scelerisque pharetra nisl. Maecenas in finibus nisl, in
-sagittis dolor.
 
 \begin{figure}[hb]
 \centering
@@ -389,7 +396,7 @@ turpis.
 \subsection{Impulse Response Analysis}\label{impulse-response-analysis-1}}
 
 
-\begin{figure}[hb]
+\begin{figure}[ht]
 \centering
   \includegraphics[width=0.9\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/IRF_all.png}
   \caption{Plot of Impulse Response Function, Lag 0 to 10}
