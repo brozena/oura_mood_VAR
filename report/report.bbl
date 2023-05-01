@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -23,6 +23,19 @@ Eliezer Bose, Marilyn Hravnak, and Susan~M. Sereika.
 \newblock ISSN 0029-6562.
 \newblock \doi{10.1097/NNR.0000000000000193}.
 \newblock URL \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5161241/}.
+
+\bibitem[de~Vries et~al.(2023)de~Vries, Pennings, van~der Schans, Sanderman,
+  Oldenhuis, and Kamphuis]{devriesWearableMeasured2023}
+Herman~J. de~Vries, Helena J.~M. Pennings, Cees~P. van~der Schans, Robbert
+  Sanderman, Hilbrand K.~E. Oldenhuis, and Wim Kamphuis.
+\newblock Wearable-{Measured} {Sleep} and {Resting} {Heart} {Rate}
+  {Variability} as an {Outcome} of and {Predictor} for {Subjective} {Stress}
+  {Measures}: {A} {Multiple} {N}-of-1 {Observational} {Study}.
+\newblock \emph{Sensors}, 23\penalty0 (1):\penalty0 332, January 2023.
+\newblock ISSN 1424-8220.
+\newblock \doi{10.3390/s23010332}.
+\newblock URL \url{https://www.mdpi.com/1424-8220/23/1/332}.
+\newblock Number: 1 Publisher: Multidisciplinary Digital Publishing Institute.
 
 \bibitem[de~Zambotti et~al.(2019)de~Zambotti, Rosas, Colrain, and
   Baker]{dezambottiSleep2019}

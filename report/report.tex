@@ -102,15 +102,14 @@ sections that follow.
 \hypertarget{vector-autoregression}{%
 \subsection{Vector Autoregression}\label{vector-autoregression}}
 
-\citep{lutkepohlNew2005}
 
 A VAR(\textit{p}) model for a multivariate time series is a regression model for
 outcomes at time \textit{t} and time lagged predictors, with \textit{p}
 indicating the lag. Given \textit{p} = 1, the model would be concerned with one
-observation prior to \textit{t}. As noted by \citet{seabold2010statsmodels}, a \(T
-\times K\) multivariate time series (where \(T\) is the number of observations
-and \(K\) is the number of variables) can be modeled using a \textit{p}-lag VAR
-model, notated as
+observation prior to \textit{t}. As noted by \citet{lutkepohlNew2005}
+(as cited in \citealt{seabold2010statsmodels}), a \(T \times K\) multivariate time
+series (where \(T\) is the number of observations and \(K\) is the number of
+variables) can be modeled using a \textit{p}-lag VAR model, notated as
 
 
 \begin{equation}
@@ -122,67 +121,40 @@ model, notated as
 where \(A_i\) is a \(K \times K\) coefficient matrix.
 
 
-The vector autoregressive (VAR) model is a flexible method for the analysis of
-causality in this setting.
-
-Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
-consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
-varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
-luctus dapibus. Phasellus eget lectus id ligula sollicitudin consequat
-et a nunc. Class aptent taciti sociosqu ad litora torquent per confaubia
-nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
-condimentum, consectetur fermentum magna. Praesent commodo mauris non
-massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
-volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
-
-Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
-consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
-varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
-luctus dapibus. Phasellus eget lectus id ligula sollicitudin consequat
-et a nunc. Class aptent taciti sociosqu ad litora torquent per confaubia
-nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
-condimentum, consectetur fermentum magna. Praesent commodo mauris non
-massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
-volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
+Intercept terms are included in \(\nu\) and regression coefficients are included
+as the subscripted \(A\) values. This equation is solved using ordinary least
+squares (OLS) estimation. The vector autoregressive (VAR) model is a flexible
+method for the analysis of causality in this setting.
 
 \hypertarget{granger-causality}{%
-\subsection{Granger Causality}\label{granger-causality}}
+\subsection{Granger Causality Testing}\label{granger-causality}}
 
-Nunc eget risus nec odio commodo feugiat nec ac arcu. Maecenas laoreet
-lorem ut mi tristique ultricies. Maecenas lacinia fermentum euismod.
-Praesent quis ornare urna. Orci varius natoque penatibus et magnis dis
-parturient montes, nascetur ridiculus mus. Nunc non ornare risus. Nunc
-vulputate risus a dapibus eleifend. Aenean justo lacus, dignissim eget
-gravida sed, laoreet eu neque. Vivamus volutpat risus non ligula feugiat
-sollicitudin. Ut nec porttitor ipsum.
+In order to better assess the predictive capacity of the Oura sleep score on
+self-reported mood states, I incorporated Granger causality tests. Granger
+causality defines one type of relationship between time series
+\citep{grangerInvestigating1969} and states that a variable \textit{Granger
+causes} another variable if "the prediction of one time series is improved by
+incorporating the knowledge of a second time series" \citep{boseVector2017}.
 
-Nulla lobortis neque blandit dui tristique placerat. Cras a tempor leo,
-nec vulputate libero. Vivamus efficitur ipsum sit amet enim pretium,
-eget consequat turpis luctus. Aenean mattis velit vitae odio lobortis,
-ut sodales augue posuere. Pellentesque habitant morbi tristique senectus
-et netus et malesuada fames ac turpis egestas. Vestibulum ac accumsan
-eros, a mattis lacus. Sed in lectus felis. Fusce quis dui odio. Integer
-tincidunt vitae tortor a tempus. Nam venenatis eros rutrum quam
-tristique finibus. Nullam varius vel massa at iaculis. Morbi
-condimentum, loremh non tempus auctor, mauris arcu tempus libero, ac
-venenatis odio enim at odio. Maecenas egestas sit amet lorem in aliquet.
-Aenean nec eros ante.
+Here, two autoregressive models are fit to the first time series, once with and once
+without the inclusion of the second time series. The improvement of the
+prediction is measured as the ratio of variance of the error terms. The null
+hypothesis states that the first variable \textit{does not} Granger cause the
+second variable and is rejected if the coefficients for the lagged values of the
+first variable are significant.
+
+For the purposes of this study, Granger causation tests were applied using sleep
+scores as a single predictor and each mood state as outcome variables.
 
 \hypertarget{impulse-response-analysis}{%
-\subsection{Impulse Response Analysis}\label{impulse-response-analysis}}
+\subsection{Impulse Response Function Visualization}\label{impulse-response-analysis}}
 
-Nulla lobortis neque blandit dui tristique placerat. Cras a tempor leo,
-nec vulputate libero. Vivamus efficitur ipsum sit amet enim pretium,
-eget consequat turpis luctus. Aenean mattis velit vitae odio lobortis,
-ut sodales augue posuere. Pellentesque habitant morbi tristique senectus
-et netus et malesuada fames ac turpis egestas. Vestibulum ac accumsan
-eros, a mattis lacus. Sed in lectus felis. Fusce quis dui odio. Integer
-tincidunt vitae tortor a tempus. Nam venenatis eros rutrum quam
-tristique finibus. Nullam varius vel massa at iaculis. Morbi
-condimentum, loremh non tempus auctor, mauris arcu tempus libero, ac
-venenatis odio enim at odio. Maecenas egestas sit amet lorem in aliquet.
-Aenean nec eros ante.
-
+An impulse response function (IRF) is the "reaction of a dynamic system in
+response to an external change" \citep{devriesWearableMeasured2023}. Plotting an
+IRF allows for the interpretation of the impulse of a predictor on other
+variables on subsequent days. Given sleep scoring as a predictor, an IRF
+visualization was created to better understand its impact on mood state. Figure
+\ref{IRF} displays the results of this analysis over a 10-day period.
 
 \hypertarget{results}{%
 \section{Experimental Results}\label{results}}
