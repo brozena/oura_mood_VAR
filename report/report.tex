@@ -73,8 +73,18 @@ moshePredicting2021, jafarlouObjective2023}. As this work also demonstrates,
 combining data from consumer wearable technology and subjective self-report logs
 allows for a more comprehensive picture of health.
 
+I will first describe the vector autoregression (VAR) method and subsequent
+tests, namely the Granger causality test and an impulse response analysis, that
+were performed to achieve these goals.
+
+First, I will describe the methods used to achieve these goals, providing an
+overview of vector autoregression, Granger causality, and impulse response
+functions. Next, I will detail the findings of these methods on the dataset.
+This work concludes with a discussion of the methods and their potential
+applications in future work.
+
 \hypertarget{methods}{%
-\section{Methods}\label{methods}}
+\section{Problem setup}\label{methods}}
 
 A multivariate time series analysis was performed using a vector autoregressive
 (VAR) model fit using ordinary least squares. An optimal lag order was first
@@ -87,74 +97,6 @@ response analysis was plotted to further explore the temporal relationships
 between variables, specifically between sleep, heartrate variability, and
 self-reported mood. I will outline these analysis steps in greater detail in the
 sections that follow.
-
-\hypertarget{dataset-description}{%
-\subsection{Dataset Description}\label{dataset-description}}
-
-The sleep score dataset was created using the second- and third-generation Oura
-Ring. As detailed in Table \ref{Sleep}, my use of the Oura Ring was consistent across
-time. The proprietary Oura sleep score is on a scale of 1 to 100 and
-incorporates a variety of sensor-based measures (i.e., heartrate variability,
-resting heartrate, body temperature) across time. Although the specifics of this
-algorithm are not public, the Oura Ring has been found to produce
-accurate measures of sleep timing and heartrate variability when compared
-against polysomnography \citep{dezambottiSleep2019}. The dataset contains 1,455
-nights of sleep bout data occuring between February, 2019 and March, 2023.
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{lr}
-  \toprule
-     & \textbf{Value}\\ \midrule
-      Total nights & 1455 \\
-      Missing nights & 1 \\
-      Mean & 73.82 \\
-      SD & 12.36 \\
-      Max & 97.00 \\
-      Min & 30.00 \\
-   \bottomrule
-  \end{tabular}
-\caption{Descriptive statistics of Oura Ring sleep score data}
-\label{Sleep}
-\end{table}
-
-Aliquam tristique, sem id venenatis pellentesque, elit ante auctor arcu,
-ac commodo tellus ante vel massa. Praesent placerat tristique tellus sed
-elementum. Etiam vehicula dolor non libero blandit, eu scelerisque felis
-pulvinar. Ut ac bibendum ante. Integer consequat, nisi in placerat
-dictum, nibh tellus feugiat est, id tristique risus magna venenatis
-lectus. Nulla viverra nulla mi, in feugiat velit pharetra dictum. Proin
-id viverra mauris. Morbi a pellentesque nisl, at volutpat ligula. Donec
-tristique facilisis felis, et euismod mauris. Suspendisse ac massa quis
-augue pharetra vestibulum ac ut mi. Phasellus efficitur dignissim nisl.
-Vivamus ornare ex vel dui rutrum convallis. Sed nec urna fermentum augue
-facilisis ultricies.
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{ll}
-    \toprule
-        \textbf{EMA Categories} & \textbf{Count} \\ \midrule
-        irritable & 100 \\
-        anxious & 88  \\
-        depressed & 103  \\
-        elevated & 48  \\
-        \bottomrule
-    \end{tabular}
-\caption{Count of days where EMA item contains a non-zero value}
-\label{EMA}
-\end{table}
-
-
-Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
-consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
-varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
-luctus dapibus. Phasellus eget lectus id ligula sollicitudin consequat
-et a nunc. Class aptent taciti sociosqu ad litora torquent per confaubia
-nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
-condimentum, consectetur fermentum magna. Praesent commodo mauris non
-massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
-volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
 
 \hypertarget{vector-autoregression}{%
 \subsection{Vector Autoregression}\label{vector-autoregression}}
@@ -232,7 +174,7 @@ Aenean nec eros ante.
 
 
 \hypertarget{results}{%
-\section{Results}\label{results}}
+\section{Experimental Results}\label{results}}
 
 Nullam non risus augue. Nunc commodo pharetra eros, non condimentum sem
 ultrices ut. Nunc pharetra enim eget commodo pharetra. Pellentesque
@@ -245,6 +187,75 @@ congue a. Nunc et venenatis sapien. Aliquam vel lectus scelerisque,
 pellentesque enim ac, sagittis erat. Praesent molestie, velit eget
 pretium venenatis, est nisl rutrum orci, ut placerat leo odio in nulla.
 Sed bibendum nunc libero, in vestibulum metus hendrerit at.
+
+\hypertarget{dataset-description}{%
+\subsection{Dataset Description}\label{dataset-description}}
+
+The sleep score dataset was created using the second- and third-generation Oura
+Ring. As detailed in Table \ref{Sleep}, my use of the Oura Ring was consistent across
+time. The proprietary Oura sleep score is on a scale of 1 to 100 and
+incorporates a variety of sensor-based measures (i.e., heartrate variability,
+resting heartrate, body temperature) across time. Although the specifics of this
+algorithm are not public, the Oura Ring has been found to produce
+accurate measures of sleep timing and heartrate variability when compared
+against polysomnography \citep{dezambottiSleep2019}. The dataset contains 1,455
+nights of sleep bout data occuring between February, 2019 and March, 2023.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lr}
+  \toprule
+     & \textbf{Value}\\ \midrule
+      Total nights & 1455 \\
+      Missing nights & 1 \\
+      Mean & 73.82 \\
+      SD & 12.36 \\
+      Max & 97.00 \\
+      Min & 30.00 \\
+   \bottomrule
+  \end{tabular}
+\caption{Descriptive statistics of Oura Ring sleep score data}
+\label{Sleep}
+\end{table}
+
+Aliquam tristique, sem id venenatis pellentesque, elit ante auctor arcu,
+ac commodo tellus ante vel massa. Praesent placerat tristique tellus sed
+elementum. Etiam vehicula dolor non libero blandit, eu scelerisque felis
+pulvinar. Ut ac bibendum ante. Integer consequat, nisi in placerat
+dictum, nibh tellus feugiat est, id tristique risus magna venenatis
+lectus. Nulla viverra nulla mi, in feugiat velit pharetra dictum. Proin
+id viverra mauris. Morbi a pellentesque nisl, at volutpat ligula. Donec
+tristique facilisis felis, et euismod mauris. Suspendisse ac massa quis
+augue pharetra vestibulum ac ut mi. Phasellus efficitur dignissim nisl.
+Vivamus ornare ex vel dui rutrum convallis. Sed nec urna fermentum augue
+facilisis ultricies.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ll}
+    \toprule
+        \textbf{EMA Categories} & \textbf{Count} \\ \midrule
+        irritable & 100 \\
+        anxious & 88  \\
+        depressed & 103  \\
+        elevated & 48  \\
+        \bottomrule
+    \end{tabular}
+\caption{Count of days where EMA item contains a non-zero value}
+\label{EMA}
+\end{table}
+
+
+Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
+consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
+varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
+luctus dapibus. Phasellus eget lectus id ligula sollicitudin consequat
+et a nunc. Class aptent taciti sociosqu ad litora torquent per confaubia
+nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
+condimentum, consectetur fermentum magna. Praesent commodo mauris non
+massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
+volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
+
 
 \hypertarget{stationarity-decomposition-and-autocorrelation}{%
 \subsection{Stationarity, Decomposition, and
