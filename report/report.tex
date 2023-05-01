@@ -251,7 +251,10 @@ stationarity.
 
 An exploratory time series decomposition visualization was created to better
 understand the presence of trend in the sleep score dataset. Figure
-\ref{Decomposition} contains these results.
+\ref{Decomposition} contains these results. Additionally, a partial
+autocorrelation function was plotted using \texttt{statsmodels}, displayed in
+Figure \ref{PACF}. Notably, partial autocorrelation appears to drop to zero for
+lag values greater than 2.
 
 
 \begin{figure}[hb]
@@ -262,15 +265,10 @@ understand the presence of trend in the sleep score dataset. Figure
 \end{figure}
 
 \begin{figure}[hb]
-  \centering
-  \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/acf.png}
-\caption{Autocorrelation of sleep time series}
-\end{figure}
-
-\begin{figure}[hb]
 \centering
   \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/pacf.png}
 \caption{Partial autocorrelation of sleep time series}
+\label{PACF}
 \end{figure}
 
 \hypertarget{lag-order-selection}{%
