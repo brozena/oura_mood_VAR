@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{jmlr2e}
 \usepackage{booktabs}
+\usepackage{amsmath}
 \firstpageno{1}
 
 \begin{document}
@@ -90,7 +91,7 @@ A multivariate time series analysis was performed using a vector autoregressive
 (VAR) model fit using ordinary least squares. An optimal lag order was first
 obtained using a combination of Akaike Information Criterion (AIC), Bayesian
 Information Criterion (BIC), Hannan-Quinn Information Criterion (HQIC), and
-final prediction error (FPE). After fitting a VAR(3) model on the multiple time
+final prediction error (FPE). After fitting a VAR(2) model on the multiple time
 series data (outlined below), a Granger causality test was performed in order to
 assess the predictive relationships between variables. Finally, an impulse
 response analysis was plotted to further explore the temporal relationships
@@ -101,18 +102,28 @@ sections that follow.
 \hypertarget{vector-autoregression}{%
 \subsection{Vector Autoregression}\label{vector-autoregression}}
 
-\citep{seabold2010statsmodels}
-
 \citep{lutkepohlNew2005}
 
-Pellentesque est dolor, porttitor sed est at, interdum elementum diam.
-Sed bibendum enim ante. Sed vestibulum diam at arcu tincidunt, quis
-aliquet dui lobortis. Donec ultricies ipsum ac eros sodales, et placerat
-massa suscipit. Etiam luctus arcu quis blandit auctor. In ultricies nisi
-dignissim enim finibus, sit amet fringilla dolor facilisis. Donec sit
-amet lectus eu lorem porta vehicula. Cras vel ex vehicula, fermentum mi
-sed, aliquet ante. Maecenas gravida odio eget mi iaculis, non
-scelerisque tortor ornare.
+A VAR(\textit{p}) model for a multivariate time series is a regression model for
+outcomes at time \textit{t} and time lagged predictors, with \textit{p}
+indicating the lag. Given \textit{p} = 1, the model would be concerned with one
+observation prior to \textit{t}. As noted by \citet{seabold2010statsmodels}, a \(T
+\times K\) multivariate time series (where \(T\) is the number of observations
+and \(K\) is the number of variables) can be modeled using a \textit{p}-lag VAR
+model, notated as
+
+
+\begin{equation}
+  \begin{split}
+    Y_t = \nu + A_1 Y_{t-1} + \ldots + A_p Y_{t-p} + u_t \\ u_t \sim {\sf Normal}(0, \Sigma_u)
+  \end{split}
+\end{equation}
+
+where \(A_i\) is a \(K \times K\) coefficient matrix.
+
+
+The vector autoregressive (VAR) model is a flexible method for the analysis of
+causality in this setting.
 
 Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
 consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
@@ -192,16 +203,17 @@ Sed bibendum nunc libero, in vestibulum metus hendrerit at.
 \subsection{Dataset Description}\label{dataset-description}}
 
 The sleep score dataset was created using the second- and third-generation Oura
-Ring. As detailed in Table \ref{Sleep}, my use of the Oura Ring was consistent across
-time. The proprietary Oura sleep score is on a scale of 1 to 100 and
+Ring. The proprietary Oura sleep score is on a scale of 1 to 100 and
 incorporates a variety of sensor-based measures (i.e., heartrate variability,
 resting heartrate, body temperature) across time. Although the specifics of this
 algorithm are not public, the Oura Ring has been found to produce
 accurate measures of sleep timing and heartrate variability when compared
-against polysomnography \citep{dezambottiSleep2019}. The dataset contains 1,455
-nights of sleep bout data occuring between February, 2019 and March, 2023.
+against polysomnography \citep{dezambottiSleep2019}. As detailed in Table
+\ref{Sleep}, my use of the Oura Ring was consistent across time. The dataset
+contains 1,455 nights of sleep bout data occuring between February, 2019 and
+March, 2023.
 
-\begin{table}[ht]
+\begin{table}
   \centering
   \begin{tabular}{lr}
   \toprule
@@ -218,19 +230,17 @@ nights of sleep bout data occuring between February, 2019 and March, 2023.
 \label{Sleep}
 \end{table}
 
-Aliquam tristique, sem id venenatis pellentesque, elit ante auctor arcu,
-ac commodo tellus ante vel massa. Praesent placerat tristique tellus sed
-elementum. Etiam vehicula dolor non libero blandit, eu scelerisque felis
-pulvinar. Ut ac bibendum ante. Integer consequat, nisi in placerat
-dictum, nibh tellus feugiat est, id tristique risus magna venenatis
-lectus. Nulla viverra nulla mi, in feugiat velit pharetra dictum. Proin
-id viverra mauris. Morbi a pellentesque nisl, at volutpat ligula. Donec
-tristique facilisis felis, et euismod mauris. Suspendisse ac massa quis
-augue pharetra vestibulum ac ut mi. Phasellus efficitur dignissim nisl.
-Vivamus ornare ex vel dui rutrum convallis. Sed nec urna fermentum augue
-facilisis ultricies.
+Each day at 4:30pm I received a notification prompting me to log my subjective
+state in eMood Tracker, a mobile application for iOS. eMood Tracker is
+"recommended by psychologists, therapists, and social workers" and is intended
+to "track symptom data relating to Bipolar I and II disorders"
+\citep{eMoods2023}. The version used through this period contains preset mood
+categories (depressed, irritable, anxious, and elevated) and allow users to log
+the presence and intensity on a scale of 0 to 3, where 0 is "not present" and 3
+is "severe". The resulting dataset contains the most severe mood state per day.
+The contents of this dataset are outlined in Table \ref{EMA}.
 
-\begin{table}[ht]
+\begin{table}
     \centering
     \begin{tabular}{ll}
     \toprule
@@ -246,16 +256,12 @@ facilisis ultricies.
 \end{table}
 
 
-Nam eu varius lacus. Aliquam ultricies diam id nibh vehicula
-consectetur. Nullam euismod felis a aliquam iaculis. Quisque nibh enim,
-varius a porta lacinia, lobortis vel nisl. Vestibulum molestie nunc et
-luctus dapibus. Phasellus eget lectus id ligula sollicitudin consequat
-et a nunc. Class aptent taciti sociosqu ad litora torquent per confaubia
-nostra, per inceptos himenaeos. Praesent eros magna, tempor vitae justo
-condimentum, consectetur fermentum magna. Praesent commodo mauris non
-massa pulvinar, vitae blandit sem eleifend. Vivamus varius eu nisi in
-volutpat. Aliquam scelerisque nunc vel orci euismod suscipit.
+\hypertarget{data-analysis}{%
+\subsection{Data Analysis}\label{data-analysis}}
 
+All analysis were performed in Python version 3.11.0 \citep{Python} using Pandas
+1.5.3 \citep{reback2020pandas} for data preprocessing and statsmodels 0.13.5
+\citep{seabold2010statsmodels} for modeling.
 
 \hypertarget{stationarity-decomposition-and-autocorrelation}{%
 \subsection{Stationarity, Decomposition, and
@@ -269,7 +275,7 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
   \includegraphics[width=0.8\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/decomposition.png}
 \caption{Decomposition of sleep time series}
@@ -283,8 +289,8 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}[h]
-\centering
+\begin{figure}
+  \centering
   \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/acf.png}
 \caption{Autocorrelation of sleep time series}
 \end{figure}
@@ -297,7 +303,7 @@ vel odio pulvinar auctor. Nullam ante tellus, semper non scelerisque et,
 faucibus quis urna. Duis pulvinar metus vel eleifend aliquet. Aenean
 cursus nunc vitae porttitor malesuada.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
   \includegraphics[scale=0.5]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/pacf.png}
 \caption{Partial autocorrelation of sleep time series}
@@ -318,28 +324,29 @@ Fusce vulputate justo vel est accumsan luctus. Nulla rhoncus nisi at
 lacus scelerisque, et pharetra elit interdum. Donec non ante ac nulla
 commodo euismod a et neque.
 
-\begin{table}[ht]
+\begin{table}
     \centering
     \begin{tabular}{lllll}
       \toprule
         ~ & \textbf{AIC} & \textbf{BIC} & \textbf{FPE} & \textbf{HQIC} \\ \midrule
-        \textbf{0} & 7.314 & 7.342 & 1501. & 7.325 \\ 
-        \textbf{1} & 6.080 & 6.279* & 436.9 & 6.155* \\ 
-        \textbf{2} & 6.035 & 6.404 & 417.7 & 6.175 \\ 
-        \textbf{3} & 6.028* & 6.568 & 414.9* & 6.233 \\ 
-        \textbf{4} & 6.055 & 6.765 & 426.1 & 6.324 \\ 
-        \textbf{5} & 6.056 & 6.936 & 426.6 & 6.390 \\ 
-        \textbf{6} & 6.066 & 7.118 & 431.2 & 6.465 \\ 
-        \textbf{7} & 6.071 & 7.293 & 433.3 & 6.534 \\ 
-        \textbf{8} & 6.104 & 7.496 & 447.6 & 6.631 \\ 
-        \textbf{9} & 6.131 & 7.694 & 460.4 & 6.724 \\ 
-        \textbf{10} & 6.130 & 7.863 & 459.6 & 6.787 \\ 
-        \textbf{11} & 6.129 & 8.032 & 459.5 & 6.851 \\ 
-        \textbf{12} & 6.158 & 8.232 & 473.0 & 6.944 \\ 
-        \textbf{13} & 6.177 & 8.421 & 482.2 & 7.028 \\ 
-        \textbf{14} & 6.201 & 8.616 & 494.2 & 7.117 \\ 
-        \textbf{15} & 6.213 & 8.798 & 500.3 & 7.193 \\ \bottomrule
-    \end{tabular}
+        \textbf{0}  &       1.688  &       1.708  &       5.408  &        1.695   \\
+        \textbf{1}  &    -0.02482  &    0.09412*  &      0.9755  &     0.01979*   \\
+        \textbf{2}  &   -0.03545*  &      0.1826  &     0.9652*  &      0.04635   \\
+        \textbf{3}  &    -0.03417  &      0.2830  &      0.9664  &      0.08481   \\
+        \textbf{4}  &    -0.02907  &      0.3872  &      0.9714  &       0.1271   \\
+        \textbf{5}  &    -0.02537  &      0.4900  &      0.9750  &       0.1680   \\
+        \textbf{6}  &    -0.01701  &      0.5975  &      0.9832  &       0.2135   \\
+        \textbf{7}  &    -0.01940  &      0.6943  &      0.9809  &       0.2483   \\
+        \textbf{8}  &    -0.01014  &      0.8026  &      0.9900  &       0.2948   \\
+        \textbf{9}  &  -0.0008049  &      0.9111  &      0.9993  &       0.3413   \\
+        \textbf{10} &     0.01201  &       1.023  &       1.012  &       0.3913   \\
+        \textbf{11} &     0.02510  &       1.135  &       1.026  &       0.4415   \\
+        \textbf{12} &     0.03723  &       1.246  &       1.038  &       0.4909   \\
+        \textbf{13} &     0.04867  &       1.357  &       1.050  &       0.5395   \\
+        \textbf{14} &     0.06022  &       1.468  &       1.063  &       0.5882   \\
+        \textbf{15} &     0.07076  &       1.577  &       1.074  &       0.6359   \\ 
+        \bottomrule
+        \end{tabular}
     \caption{VAR Order Selection (* highlights the minimum)}
     \label{VAROrderSelection}
 \end{table}
@@ -368,33 +375,25 @@ sollicitudin vel sem in maximus. Aenean aliquam sem ac arcu lacinia,
 vitae bibendum mauris malesuada. Praesent ac imperdiet erat. Maecenas
 tincidunt sed sem ac porta. Phasellus in justo orci.
 
-\begin{table}[ht]
+\begin{table}
     \centering
     \begin{tabular}{lllll}
-      \toprule\
-        ~ & \textbf{coefficient} & \textbf{std. error} & \textbf{t-stat} & \textbf{prob} \\ \midrule
-        \textbf{const} & 33.675538 & 2.896460 & 11.626 & 0.000 \\ 
-        \textbf{L1.score} & 0.507601 & 0.031112 & 16.315 & 0.000 \\ 
-        \textbf{L1.average\_hrv} & -0.050172 & 0.022424 & -2.237 & 0.025 \\ 
-        \textbf{L1.anxious} & -0.078201 & 0.494593 & -0.158 & 0.874 \\ 
-        \textbf{L1.depressed} & 0.615468 & 0.457538 & 1.345 & 0.179 \\ 
-        \textbf{L1.irritable} & -0.015195 & 0.457422 & -0.033 & 0.973 \\ 
-        \textbf{L1.elevated} & -0.150473 & 0.729563 & -0.206 & 0.837 \\ 
-        \textbf{L2.score} & -0.020902 & 0.034834 & -0.600 & 0.548 \\ 
-        \textbf{L2.average\_hrv} & -0.027687 & 0.022370 & -1.238 & 0.216 \\ 
-        \textbf{L2.anxious} & 0.178654 & 0.540249 & 0.331 & 0.741 \\ 
-        \textbf{L2.depressed} & \textbf{1.427585} & 0.490653 & 2.910 & \textbf{0.004} \\ 
-        \textbf{L2.irritable} & -0.634113 & 0.500474 & -1.267 & 0.205 \\ 
-        \textbf{L2.elevated} & -0.164427 & 0.771205 & -0.213 & 0.831 \\ 
-        \textbf{L3.score} & 0.117166 & 0.031157 & 3.760 & 0.000 \\ 
-        \textbf{L3.average\_hrv} & -0.023210 & 0.022319 & -1.040 & 0.298 \\ 
-        \textbf{L3.anxious} & 0.003463 & 0.492368 & 0.007 & 0.994 \\ 
-        \textbf{L3.depressed} & 0.152999 & 0.458520 & 0.334 & 0.739 \\ 
-        \textbf{L3.irritable} & 0.406833 & 0.457032 & 0.890 & 0.373 \\ 
-        \textbf{L3.elevated} & -0.805440 & 0.732522 & -1.100 & 0.272 \\ \bottomrule
+      \toprule
+       ~ & \textbf{coefficient} & \textbf{std. error} & \textbf{t-stat} & \textbf{prob} \\ \midrule
+        \textbf{L1.score} & 0.633262 & 0.027574 & 22.966 & 0.000 \\
+        \textbf{L1.anxious} & 0.153275 & 0.446110 & 0.344 & 0.731 \\
+        \textbf{L1.depressed} & 0.477164 & 0.409130 & 1.166 & 0.243 \\
+        \textbf{L1.irritable} & -0.282988 & 0.412509 & -0.686 & 0.493 \\
+        \textbf{L1.elevated} & -0.220198 & 0.655784 & -0.336 & 0.737 \\
+        \textbf{L2.score} & -0.003080 & 0.027452 & -0.112 & 0.911 \\
+        \textbf{L2.anxious} & 0.353528 & 0.445359 & 0.794 & 0.427 \\
+        \textbf{L2.depressed} & 1.241873 & 0.409667 & 3.031 & 0.002 \\
+        \textbf{L2.irritable} & -0.080069 & 0.412341 & -0.194 & 0.846 \\
+        \textbf{L2.elevated} & -0.499540 & 0.657230 & -0.760 & 0.447 \\
+        \bottomrule
     \end{tabular}
     \caption{VAR results for equation score}
-    \label{VAR Score Results}
+    \label{VARScoreResults}
 \end{table}
 
 Vestibulum sit amet faucibus purus. Proin ornare nisi et purus
@@ -412,21 +411,19 @@ turpis.
 \hypertarget{granger-causality-1}{%
 \subsection{Granger Causality}\label{granger-causality-1}}
 
-\begin{table}[ht]
+\begin{table}
     \centering
     \begin{tabular}{llllll}
     \toprule
-        \textbf{Causal Variable} & \textbf{Variable} & \textbf{Test statistic} & \textbf{Critical value} & \textbf{p-value} & \textbf{df} \\ \midrule
-        average\_hrv & depressed & 1.541 & 2.606 & 0.202 & (3, 6234) \\ 
-        average\_hrv & anxious & 0.3879 & 2.606 & 0.762 & (3, 6234) \\ 
-        average\_hrv & irritable & 0.8046 & 2.606 & 0.491 & (3, 6234) \\ 
-        average\_hrv & elevated & 0.6640 & 2.606 & 0.574 & (3, 6234) \\ 
-        \textbf{score} & \textbf{depressed} & 5.155 & 2.606 & \textbf{0.001} & (3, 6234) \\ 
-        score & anxious & 2.432 & 2.606 & 0.063 & (3, 6234) \\ 
-        score & irritable & 1.311 & 2.606 & 0.269 & (3, 6234) \\ 
-        score & elevated & 0.7891 & 2.606 & 0.500 & (3, 6234) \\ \bottomrule
+        \textbf{Causal Variable} & \textbf{Variable} & \textbf{Test statistic} & \textbf{Critical value} & \textbf{p-value} & \textbf{df} \\
+        \midrule
+        sleepscore & \textbf{depressed} & \textbf{5.384} & 2.997 & \textbf{0.005} & (2, 6535) \\
+        sleepscore & \textbf{anxious} & \textbf{3.294} & 2.997 & \textbf{0.037} & (2, 6535) \\
+        sleepscore & irritable & 1.347 & 2.997 & 0.260 & (2, 6535) \\
+        sleepscore & elevated & 1.203 & 2.997 & 0.500 & (2, 6535) \\
+      \bottomrule
     \end{tabular}
-    \caption{Granger Causality Test for HRV and Sleep Score}
+    \caption{Granger Causality Test for Sleep Score}
     \label{Granger}
 \end{table}
 
@@ -439,6 +436,7 @@ turpis.
 \centering
   \includegraphics[width=0.9\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/IRF_all.png}
   \caption{Plot of Impulse Response Function, Lag 0 to 10}
+  \label{IRF}
 \end{figure}
 
 

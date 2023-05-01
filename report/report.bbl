@@ -1,9 +1,17 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Pyt()]{Python}
+The {Python} {Language} {Reference}.
+\newblock URL \url{https://docs.python.org/3/reference/index.html}.
+
+\bibitem[eMo(2023)]{eMoods2023}
+{eMoods}, 2023.
+\newblock URL \url{https://emoodtracker.com}.
 
 \bibitem[Bose et~al.(2017)Bose, Hravnak, and Sereika]{boseVector2017}
 Eliezer Bose, Marilyn Hravnak, and Susan~M. Sereika.
@@ -139,5 +147,10 @@ Greg Murray and Allison Harvey.
 Skipper Seabold and Josef Perktold.
 \newblock statsmodels: {Econometric} and statistical modeling with python.
 \newblock In \emph{9th python in science conference}, 2010.
+
+\bibitem[{The pandas development team}(2020)]{reback2020pandas}
+{The pandas development team}.
+\newblock pandas-dev/pandas: {Pandas}, February 2020.
+\newblock URL \url{https://doi.org/10.5281/zenodo.3509134}.
 
 \end{thebibliography}
