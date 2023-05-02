@@ -237,7 +237,7 @@ found not to be stationary, an approach known as differencing can be applied to
 achieve stationarity. The Dickey-Fuller test is one mechanism to determine
 whether a time series is stationary.
 
-Two Dickey-Fuller tests were performed on the sleep score time series, first via
+Two Dickey-Fuller tests were performed on each time series, first via
 \texttt{statsmodels} and then, additionally, using \texttt{pymdarima} to assess
 the need for differencing. The \texttt{statsmodels} approach
 \citet{seabold2020statsmodels}, an Augmented Dickey-Fuller test (ADF), yielded a
@@ -274,16 +274,16 @@ lag values greater than 2.
 \hypertarget{lag-order-selection}{%
 \subsection{Lag Order Selection}\label{lag-order-selection}}
 
-The number of lags amounts to the number of preceding days included as predictor
-values. The \texttt{statsmodels} function \texttt{selectorder} was used to
-assess an optimal lag value with possibilities between 0 and 15. The optimal lag
-value was determined using four information criteria --- Akaike Information
-Criteria (AIC), Bayes Information Criterion (BIC), Final Prediction Error (FPE),
-and Hannan-Quinn (HQ) criterion. As detailed in Table \ref{VAROrderSelection},
-this selection process yielded a tie with lag-1 and lag-2 each labeled as the
-minimum on these criteria. Rather than taking further quantitative approaches,
-Lag-2 was selected based on prior knowledge of sleep quality and the onset of
-mood states.
+The number of lags amount to the number of preceding days included as predictor
+values in the model. The \texttt{statsmodels} function \texttt{selectorder} was
+used to assess an optimal lag value with possibilities between 0 and 15. The
+optimal lag value was determined using four information criteria --- Akaike
+Information Criteria (AIC), Bayes Information Criterion (BIC), Final Prediction
+Error (FPE), and Hannan-Quinn (HQ) criterion. As detailed in Table
+\ref{VAROrderSelection}, this selection process yielded a tie with lag-1 and
+lag-2 each labeled as the minimum on these criteria. Rather than taking further
+quantitative approaches, Lag-2 was selected based on prior knowledge of sleep
+quality and the onset of mood states.
 
 \begin{table}
     \centering
@@ -316,15 +316,12 @@ mood states.
 \subsection{Vector Autoregression
 Model}\label{vector-autoregression-model}}
 
-Sed id feugiat tortor. Duis arcu lorem, rutrum ut nunc quis, bibendum
-mollis metus. In pulvinar ut mauris in malesuada. Curabitur eu massa
-aliquam, laoreet dui maximus, porta tellus. Aliquam erat volutpat. Proin
-quis lectus nisl. Mauris sagittis bibendum elit eu accumsan. Aliquam ut
-dui faucibus, dictum magna id, venenatis metus. Mauris ex mi, tempor vel
-nunc eu, placerat placerat nunc. Cras facilisis varius bibendum. Sed
-sollicitudin vel sem in maximus. Aenean aliquam sem ac arcu lacinia,
-vitae bibendum mauris malesuada. Praesent ac imperdiet erat. Maecenas
-tincidunt sed sem ac porta. Phasellus in justo orci.
+All time series under analysis were found to be stationary (ADF test \textit{p}
+< .05). The results of the VAR(2) model predicting mood states using sleep score
+are shown in Table \ref{VARScoreResults}. Sleep score was found to be a
+significant positive predictor of depression, also confirmed via Granger
+causation tests. Sleep score did not positively or negatively predict other mood
+states in this model.
 
 \begin{table}[hb]
     \centering
@@ -347,20 +344,11 @@ tincidunt sed sem ac porta. Phasellus in justo orci.
     \label{VARScoreResults}
 \end{table}
 
-Vestibulum sit amet faucibus purus. Proin ornare nisi et purus
-pellentesque mollis. Mauris aliquet metus sed sem blandit, quis accumsan
-justo blandit. Donec vitae lectus commodo, placerat tellus sed, interdum
-ex. Suspendisse potenti. Suspendisse tincidunt, enim in convallis
-sollicitudin, metus orci facilisis ex, non tristique nunc est ac magna.
-Aenean ut lorem interdum dui dictum venenatis. Nullam hendrerit placerat
-mauris, et tempor neque convallis vitae. Pellentesque vitae ligula id
-elit hendrerit dapibus. Suspendisse lobortis, dui id ultrices viverra,
-lorem arcu ornare dui, faucibus vehicula tortor erat sed ex. Morbi ac
-dolor ut nunc fringilla facilisis nec lobortis urna. Nullam ac tempus
-turpis.
-
 \hypertarget{granger-causality-1}{%
 \subsection{Granger Causality}\label{granger-causality-1}}
+
+The results of the Granger causation tests are shown in table \ref{Granger}.
+Sleep score was shown to Granger-cause both depressed and anxious mood.
 
 \begin{table}[hb]
     \centering
@@ -382,6 +370,12 @@ turpis.
 \hypertarget{impulse-response-analysis-1}{%
 \subsection{Impulse Response Analysis}\label{impulse-response-analysis-1}}
 
+As shown in Figure \ref{IRF}, the impact of an increase in sleep score on the
+four self-reported mood states varies by self-report state over a 10-day period.
+Standard errors are plotted at the 95% significance level. The effect of an
+increase to sleep score on depressed and anxious moods appear to be most felt
+only after several days of its impact, peaking at roughly 3 days and then
+gradually decaying.
 
 \begin{figure}[ht]
 \centering
