@@ -95,7 +95,7 @@ final prediction error (FPE). After fitting a VAR(2) model on the multiple time
 series data (outlined below), a Granger causality test was performed in order to
 assess the predictive relationships between variables. Finally, an impulse
 response analysis was plotted to further explore the temporal relationships
-between variables, specifically between sleep, heartrate variability, and
+between variables, specifically between sleep, heart rate variability, and
 self-reported mood. I will outline these analysis steps in greater detail in the
 sections that follow.
 
@@ -133,8 +133,8 @@ In order to better assess the predictive capacity of the Oura sleep score on
 self-reported mood states, I incorporated Granger causality tests. Granger
 causality defines one type of relationship between time series
 \citep{grangerInvestigating1969} and states that a variable \textit{Granger
-causes} another variable if "the prediction of one time series is improved by
-incorporating the knowledge of a second time series" \citep{boseVector2017}.
+causes} another variable if ``the prediction of one time series is improved by
+incorporating the knowledge of a second time series'' \citep{boseVector2017}.
 
 Here, two autoregressive models are fit to the first time series, once with and once
 without the inclusion of the second time series. The improvement of the
@@ -149,8 +149,8 @@ scores as a single predictor and each mood state as outcome variables.
 \hypertarget{impulse-response-analysis}{%
 \subsection{Impulse Response Function Visualization}\label{impulse-response-analysis}}
 
-An impulse response function (IRF) is the "reaction of a dynamic system in
-response to an external change" \citep{devriesWearableMeasured2023}. Plotting an
+An impulse response function (IRF) is the ``reaction of a dynamic system in
+response to an external change'' \citep{devriesWearableMeasured2023}. Plotting an
 IRF allows for the interpretation of the impulse of a predictor on other
 variables on subsequent days. Given sleep scoring as a predictor, an IRF
 visualization was created to better understand its impact on mood state. Figure
@@ -164,13 +164,13 @@ visualization was created to better understand its impact on mood state. Figure
 
 The sleep score dataset was created using the second- and third-generation Oura
 Ring. The proprietary Oura sleep score is on a scale of 1 to 100 and
-incorporates a variety of sensor-based measures (i.e., heartrate variability,
-resting heartrate, body temperature) across time. Although the specifics of this
+incorporates a variety of sensor-based measures (i.e., heart rate variability,
+resting heart rate, body temperature) across time. Although the specifics of this
 algorithm are not public, the Oura Ring has been found to produce
-accurate measures of sleep timing and heartrate variability when compared
+accurate measures of sleep timing and heart rate variability when compared
 against polysomnography \citep{dezambottiSleep2019}. As detailed in Table
 \ref{Sleep}, my use of the Oura Ring was consistent across time. The dataset
-contains 1,455 nights of sleep bout data occuring between February, 2019 and
+contains 1,455 nights of sleep bout data occurring between February, 2019 and
 March, 2023.
 
 \begin{table}[hb]
@@ -192,13 +192,13 @@ March, 2023.
 
 Each day at 4:30pm I received a notification prompting me to log my subjective
 state in eMood Tracker, a mobile application for iOS. eMood Tracker is
-"recommended by psychologists, therapists, and social workers" and is intended
-to "track symptom data relating to Bipolar I and II disorders"
+``recommended by psychologists, therapists, and social workers'' and is intended
+to ``track symptom data relating to Bipolar I and II disorders''
 \citep{eMoods2023}. The version used through this period contains preset mood
 categories (depressed, irritable, anxious, and elevated) and allow users to log
-the presence and intensity on a scale of 0 to 3, where 0 is "not present" and 3
-is "severe". The resulting dataset contains the most severe mood state per day.
-The contents of this dataset are outlined in Table \ref{EMA}.
+the presence and intensity on a scale of 0 to 3, where 0 is ``not present'' and
+3 is ``severe''. The resulting dataset contains the most severe mood state per
+day. The contents of this dataset are outlined in Table \ref{EMA}.
 
 \begin{table}
     \centering
@@ -230,7 +230,7 @@ and the \texttt{pymdarima} library \citep{pmdarima}, a clone of R's
 \subsection{Stationarity, Decomposition, and
 Autocorrelation}\label{stationarity-decomposition-and-autocorrelation}}
 
-A stationary time series contains no periodic fluctuation ("trend"). Without
+A stationary time series contains no periodic fluctuation (``trend''). Without
 stationarity, the means and correlations given by a model will not accurately
 describe a time series' true signal \citep{boseVector2017}. If a time series is
 found not to be stationary, an approach known as differencing can be applied to
@@ -238,16 +238,15 @@ achieve stationarity. The Dickey-Fuller test is one mechanism to determine
 whether a time series is stationary.
 
 Two Dickey-Fuller tests were performed on each time series, first via
-\texttt{statsmodels} and then, additionally, using \texttt{pymdarima} to assess
-the need for differencing. The \texttt{statsmodels} approach
-\citet{seabold2020statsmodels}, an Augmented Dickey-Fuller test (ADF), yielded a
+\texttt{statsmodels} and then, additionally, using \texttt{pymdarima}'s
+\texttt{should\_diff()} function to assess the need for differencing. The
+\texttt{statsmodels} approach, an Augmented Dickey-Fuller test (ADF), yielded a
 significant \textit{p}-value of .001 indicating support for the null hypothesis
-that the time series is not stationary. However, the \texttt{pymdarima} approach
-\citet{pymdarima}, which performed ADF using an alpha value of 0.05, yielded a
-non-significant \textit{p}-value of 0.01 indicating that no differencing was
-required in order to produce a stationary time series. For the purposes of this
-study, I followed the results of the \texttt{pymdarima} library and assumed
-stationarity.
+that the time series is not stationary. However, the ADF performed via the \texttt{pymdarima} approach
+using an alpha value of 0.05 yielded a non-significant \textit{p}-value of 0.01
+indicating that no differencing was required in order to produce a stationary
+time series. For the purposes of this study, I followed the results of the
+\texttt{pymdarima} library and assumed stationarity.
 
 An exploratory time series decomposition visualization was created to better
 understand the presence of trend in the sleep score dataset. Figure
@@ -275,14 +274,14 @@ lag values greater than 2.
 \subsection{Lag Order Selection}\label{lag-order-selection}}
 
 The number of lags amount to the number of preceding days included as predictor
-values in the model. The \texttt{statsmodels} function \texttt{selectorder} was
+values in the model. The \texttt{statsmodels} function \texttt{select\_order()} was
 used to assess an optimal lag value with possibilities between 0 and 15. The
 optimal lag value was determined using four information criteria --- Akaike
 Information Criteria (AIC), Bayes Information Criterion (BIC), Final Prediction
 Error (FPE), and Hannan-Quinn (HQ) criterion. As detailed in Table
 \ref{VAROrderSelection}, this selection process yielded a tie with lag-1 and
 lag-2 each labeled as the minimum on these criteria. Rather than taking further
-quantitative approaches, Lag-2 was selected based on prior knowledge of sleep
+quantitative approaches, lag-2 was selected based on prior knowledge of sleep
 quality and the onset of mood states.
 
 \begin{table}
@@ -317,9 +316,9 @@ quality and the onset of mood states.
 Model}\label{vector-autoregression-model}}
 
 All time series under analysis were found to be stationary (ADF test \textit{p}
-< .05). The results of the VAR(2) model predicting mood states using sleep score
-are shown in Table \ref{VARScoreResults}. Sleep score was found to be a
-significant positive predictor of depression, also confirmed via Granger
+\textless .05). The results of the VAR(2) model predicting mood states using
+sleep score are shown in Table \ref{VARScoreResults}. Sleep score was found to
+be a significant positive predictor of depression, also confirmed via Granger
 causation tests. Sleep score did not positively or negatively predict other mood
 states in this model.
 
@@ -347,10 +346,10 @@ states in this model.
 \hypertarget{granger-causality-1}{%
 \subsection{Granger Causality}\label{granger-causality-1}}
 
-The results of the Granger causation tests are shown in table \ref{Granger}.
+The results of the Granger causation tests are shown in Table \ref{Granger}.
 Sleep score was shown to Granger-cause both depressed and anxious mood.
 
-\begin{table}[hb]
+\begin{table}[h]
     \centering
     \begin{tabular}{llllll}
     \toprule
@@ -362,7 +361,8 @@ Sleep score was shown to Granger-cause both depressed and anxious mood.
         sleepscore & elevated & 1.203 & 2.997 & 0.500 & (2, 6535) \\
       \bottomrule
     \end{tabular}
-    \caption{Granger Causality Test for Sleep Score}
+    \caption{Granger Causality Tests for Sleep Score on Self-reported Mood
+    States}
     \label{Granger}
 \end{table}
 
@@ -370,8 +370,8 @@ Sleep score was shown to Granger-cause both depressed and anxious mood.
 \hypertarget{impulse-response-analysis-1}{%
 \subsection{Impulse Response Analysis}\label{impulse-response-analysis-1}}
 
-As shown in Figure \ref{IRF}, the impact of an increase in sleep score on the
-four self-reported mood states varies by self-report state over a 10-day period.
+As shown in Figure \ref{IRF}, the impact of sleep score on the four
+self-reported mood states varies by self-report state over a 10-day period.
 Standard errors are plotted at the 95% significance level. The effect of an
 increase to sleep score on depressed and anxious moods appear to be most felt
 only after several days of its impact, peaking at roughly 3 days and then
@@ -389,48 +389,30 @@ gradually decaying.
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-Fusce consectetur accumsan tincidunt. Donec mollis odio at purus
-convallis tristique. Phasellus maximus quis tortor quis vehicula.
-Vivamus eget aliquam odio. Etiam efficitur feugiat aliquet. Cras sit
-amet turpis id nunc interdum placerat. Duis neque nibh, auctor nec
-eleifend in, pellentesque eget massa. Duis efficitur urna urna, at
-commodo massa efficitur sit amet. Curabitur tincidunt justo sem, sit
-amet hendrerit nisi dictum vitae. Ut sed sagittis dolor, vel aliquam
-urna. Ut placerat lorem non vehicula vehicula. Pellentesque sed justo
-sodales, blandit orci eget, porta sapien.
+This exploratory study affirms the role that self-tracking technologies can play
+in the ongoing management of affective disorders. This type of N-of-1 analysis
+would be impossible without inexpensive wearable sensors, and the quality of
+this dataset is directly related to how uninvasive this particular wearable is.
 
-Donec pellentesque ut ipsum rhoncus venenatis. Aliquam eu nisi vel urna
-pharetra mollis. Nulla eget tempus odio. Sed iaculis diam sit amet
-accumsan suscipit. Fusce finibus arcu a purus feugiat, at vehicula
-sapien venenatis. Etiam fermentum lacus nisl, dictum efficitur enim
-fermentum id. Donec accumsan id arcu eu rhoncus. Donec sed magna
-posuere, efficitur est eleifend, suscipit nisl. Cras semper sollicitudin
-condimentum.
+This work is not without limitation. My reliance on an algorithmic ADF test to
+assess stationarity (rather than directly assessing the data myself) could leave
+room for error. In the context of this work, an incorrect assessment of
+stationarity risks the accuracy of the remainder of the analysis. However, this
+project served as great practice for future research where the stakes are
+higher. Additionally, this work only assesses the influence of the Oura sleep
+score on mood. In reality, this is likely closer to a bidirectional influence
+and this should be reflected properly in the analysis. 
 
-Nulla eleifend eros sodales elit mattis varius vel sed felis. Sed eu
-elit ligula. Pellentesque consectetur arcu at tortor hendrerit
-venenatis. Praesent luctus dolor eros, mattis pellentesque neque
-consectetur eu. Sed iaculis porttitor quam, varius blandit ligula. Sed
-justo ante, laoreet in mattis sit amet, fringilla id lectus. Integer
-egestas sem ut tortor gravida, a suscipit orci semper.
+In future work, I hope to incorporate machine learning techniques for time
+series segment annotation in order to explore the possibility of automatic
+labeling of time periods where signals indicate the presence of an oncoming
+episode.
 
-Nam placerat pellentesque lorem vel iaculis. Aenean congue, nibh ut
-mattis pharetra, eros velit mattis enim, consequat rutrum velit justo
-sed leo. Curabitur pretium molestie iaculis. Sed malesuada malesuada
-nisl nec feugiat. Quisque eu congue erat, id interdum justo. Nam
-fringilla condimentum tempus. Ut nec eros hendrerit, pulvinar sapien ac,
-molestie nunc. Maecenas mattis ultricies augue, quis lacinia massa
-laoreet et. Etiam ut massa vel metus mollis ultrices. Mauris bibendum
-neque et lectus vestibulum dapibus. Mauris quis lorem eu est tincidunt
-lacinia.
+Finally, I want to thank you for offering this course and providing the environment for
+me to push this project forward, something I have wanted to do for several
+years.
 
-Integer felis massa, rhoncus quis sagittis quis, fringilla non lorem.
-Pellentesque feugiat eu nibh eu luctus. Duis faucibus hendrerit justo,
-ac condimentum turpis viverra non. Suspendisse egestas et risus sit amet
-luctus. In varius quam efficitur nulla efficitur sodales eget in purus.
-Quisque sagittis erat nec bibendum eleifend. Integer gravida nibh a
-commodo finibus. Nam semper sapien at mauris efficitur pretium.
-Phasellus quis egestas nunc.
+\pagebreak
 
 \bibliography{papers}
 
