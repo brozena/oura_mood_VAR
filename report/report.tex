@@ -25,8 +25,8 @@
   assessing the data for stationarity and computing the appropriate lag-length
   selection, a vector autoregressive (VAR) model was fit along with Granger
   causality tests to assess causal mechanisms within this multivariate time
-  series. Oura's nightly sleep quality score shown to Granger-cause
-  self-reported presence of depressed and anxious moods using a VAR(2) model. 
+  series. Oura's nightly sleep quality score was shown to Granger-cause
+  presence of depressed and anxious moods using a VAR(2) model. 
 
 \end{abstract}
 
@@ -274,17 +274,16 @@ lag values greater than 2.
 \hypertarget{lag-order-selection}{%
 \subsection{Lag Order Selection}\label{lag-order-selection}}
 
-In congue tristique fermentum. Morbi eleifend tortor justo, sed iaculis
-ante posuere vitae. Quisque sagittis ex sit amet mi sollicitudin tempor
-vel in ligula. Morbi porta tincidunt diam, non accumsan lorem maximus
-eget. Orci varius natoque penatibus et magnis dis parturient montes,
-nascetur ridiculus mus. Sed ut tristique leo, eu facilisis massa.
-Maecenas sed nibh hendrerit, rutrum ipsum sit amet, tempus velit. Ut
-venenatis dolor nisi, vel egestas est convallis ut. Nulla facilisi.
-Aenean vestibulum malesuada eleifend. Sed pulvinar elementum maximus.
-Fusce vulputate justo vel est accumsan luctus. Nulla rhoncus nisi at
-lacus scelerisque, et pharetra elit interdum. Donec non ante ac nulla
-commodo euismod a et neque.
+The number of lags amounts to the number of preceding days included as predictor
+values. The \texttt{statsmodels} function \texttt{selectorder} was used to
+assess an optimal lag value with possibilities between 0 and 15. The optimal lag
+value was determined using four information criteria --- Akaike Information
+Criteria (AIC), Bayes Information Criterion (BIC), Final Prediction Error (FPE),
+and Hannan-Quinn (HQ) criterion. As detailed in Table \ref{VAROrderSelection},
+this selection process yielded a tie with lag-1 and lag-2 each labeled as the
+minimum on these criteria. Rather than taking further quantitative approaches,
+Lag-2 was selected based on prior knowledge of sleep quality and the onset of
+mood states.
 
 \begin{table}
     \centering
@@ -312,16 +311,6 @@ commodo euismod a et neque.
     \caption{VAR Order Selection (* highlights the minimum)}
     \label{VAROrderSelection}
 \end{table}
-
-Cras pretium imperdiet sem id euismod. In blandit pharetra urna. Integer
-molestie eleifend ex, nec tincidunt sapien ullamcorper sit amet. Fusce
-dictum purus elit, ut sagittis diam viverra nec. Vestibulum erat felis,
-placerat ac ligula eu, dictum lacinia lacus. Maecenas mollis augue sem,
-sit amet tincidunt ex fringilla ac. Pellentesque vel metus ipsum. Sed
-sit amet nisi vitae tellus consectetur vulputate. Proin aliquam quam at
-purus tincidunt, ut pharetra ante posuere. Morbi viverra lacinia leo, ac
-malesuada eros aliquam vitae. Vivamus vitae nisl dictum, laoreet nisi
-sed, dapibus odio.
 
 \hypertarget{vector-autoregression-model}{%
 \subsection{Vector Autoregression
@@ -396,7 +385,7 @@ turpis.
 
 \begin{figure}[ht]
 \centering
-  \includegraphics[width=0.9\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/IRF.png}
+  \includegraphics[width=0.3\columnwidth]{/Users/jab/Library/Mobile Documents/com~apple~CloudDocs/PSU/Courses/2023 Spring/STAT508/project/notebooks/plots/IRF.png}
   \caption{Plot of Impulse Response Function, Lag 0 to 10}
   \label{IRF}
 \end{figure}
